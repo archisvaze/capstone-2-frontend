@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+header {
+    height: 60px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    border: 2px solid black;
+}
+
+.page {
+    padding-top: 100px;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100vw;
+    max-width: 1440px;
+}
+
+.landing section {
+    margin: 10px;
+    border: 2px solid black;
+    width: 40%;
+    max-width: 400px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+/*PATIENT ONBOARDING PAGE */
+.patient-onboarding {
+    justify-content: center;
+}
+
+.onboarding-container {
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+}
+
+.conditions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.conditions textarea {
+    width: 100%;
+}
+.specialities-container{
+    position: relative;
+}
+.specialities {
+    background-color: white;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border: 1px solid black;
+}
+
+.specialities p {
+    padding: 5px;
+    cursor: pointer;
+}
