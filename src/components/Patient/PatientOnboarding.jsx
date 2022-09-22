@@ -55,6 +55,8 @@ export default function PatientOnboarding() {
   }
   return (
     <div className='patient-onboarding page'>
+      <h1>Tell us about yourself</h1>
+      <p>This will help us serve your better.</p>
       <div className="onboarding-container">
         <FileBase64
           multiple={false}
@@ -79,7 +81,7 @@ export default function PatientOnboarding() {
             setShowMenu(!showMenu)
           }}>Speciality<span style={{ transform: showMenu === true ? "rotate(180deg)" : "rotate(0deg)", transition: "0.5s" }}>▼</span></button>
 
-          <div style={{ display: showMenu === true ? "flex" : "none" }} className="specialities">
+          <div style={{ display: showMenu === true ? "flex" : "none" }} className="specialities" onMouseLeave={() => { setShowMenu(false) }}>
             {specialities.map(l => {
               return (
                 <p onClick={() => {

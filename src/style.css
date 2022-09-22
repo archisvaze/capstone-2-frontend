@@ -27,6 +27,15 @@ input[type=number] {
     -moz-appearance: textfield;
 }
 
+button {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 15px;
+    cursor: pointer;
+}
+
 header {
     height: 60px;
     position: fixed;
@@ -46,6 +55,8 @@ header {
     width: 100vw;
     max-width: 1440px;
 }
+
+/*LANDING PAGE */
 
 .landing section {
     margin: 10px;
@@ -82,10 +93,15 @@ header {
 .conditions textarea {
     width: 100%;
 }
-.specialities-container{
+
+.specialities-container,
+.days-container {
     position: relative;
 }
-.specialities {
+
+.specialities,
+.days {
+    z-index: 5;
     background-color: white;
     position: absolute;
     display: flex;
@@ -96,7 +112,103 @@ header {
     border: 1px solid black;
 }
 
-.specialities p {
+.specialities p,
+.days p {
     padding: 5px;
     cursor: pointer;
+}
+
+
+/*DOCTOR ONBOARDING PAGE*/
+.times-container {
+    position: relative;
+}
+
+.times {
+    z-index: 5;
+    background-color: white;
+    position: absolute;
+    display: flex;
+    width: 300px;
+    height: 300px;
+    overflow-y: auto;
+    flex-wrap: wrap;
+    border: 1px solid black;
+    justify-content: center;
+}
+
+.times p {
+    cursor: pointer;
+    margin: 5px;
+    border: 1px solid black;
+}
+
+
+/*PATIENT HOME PAGE*/
+
+
+.ph-doctors-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.ph-doctor-card {
+    border: 2px solid black;
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.doctor-card-left {
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.doctor-card-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.conultation-page-container {
+    top: 0;
+    position: fixed;
+    min-height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.filter {
+    top: 0;
+    position: fixed;
+    min-height: 100vh;
+    width: 100vw;
+    background-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+
+/*CONSULTATION PAGE*/
+
+.consultation-container {
+    background-color: white;
+    border: 2px solid black;
+    z-index: 5;
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.consultation-container span{
+    margin: 0 3px;
 }
