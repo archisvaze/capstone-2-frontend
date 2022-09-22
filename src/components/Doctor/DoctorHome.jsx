@@ -2,6 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'
 import { setLogout } from '../../slices/mySlice';
+import calendar from "../../icons/calendar.svg";
+import clock from "../../icons/clock.svg";
+import health from "../../icons/health.svg";
+import phone from "../../icons/phone.svg";
+import profile from "../../icons/profile.svg";
+
 
 export default function DoctorHome() {
   const dispatch = useDispatch();
@@ -37,18 +43,30 @@ export default function DoctorHome() {
   return (
     <div className='doctor-home page'>
 
-      <h3>Your Upcoming Appointments</h3>
+      <h3>New Appointments</h3>
       <div className="upcoming-consultations-container">
         {consultations.map(obj => {
           if (obj?.status === false) {
 
             return (
               <div key={obj._id} className="dh-consultation">
-                <p>Date: {obj.date}</p>
-                <p>Time: {obj.time}</p>
-                <p>Patient Name: {obj.patient.username}</p>
-                <p>Contact: {obj.patient.phone}</p>
-                <p>Conditions: {obj.patient.conditions}</p>
+
+                <div className="dh-contact-info">
+                  <p><img src={profile} alt="" />{obj.patient.username}</p>
+                  <p><img src={phone} alt="" />{obj.patient.phone}</p>
+                </div>
+
+                <div className="dh-date-time-container">
+                  <p> <img src={calendar} alt="" />{obj.date}</p>
+                  <p><img src={clock} alt="" />{obj.time}</p>
+                </div>
+
+                <p className='dh-conditions'>{obj.patient.conditions}</p>
+
+                <div className="dh-actions">
+                  <button style={{ backgroundColor: "crimson" }}>Cancel</button>
+                  <button style={{ backgroundColor: "#22c55e" }}>Mark Done</button>
+                </div>
               </div>
             )
           }
