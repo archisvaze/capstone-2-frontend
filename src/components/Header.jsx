@@ -9,8 +9,8 @@ export default function Header() {
     const navigate = useNavigate();
     return (
         <header>
-            <img src="" alt="" className="logo" />
             <nav>
+                <img src="" alt="" className="logo" />
                 <button onClick={() => {
                     dispatch(setLogout())
                     navigate("/")

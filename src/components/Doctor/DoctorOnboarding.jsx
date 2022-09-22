@@ -104,17 +104,22 @@ export default function DoctorOnboarding() {
 
 
   return (
-    <div className='doctor-onboarding page'>
+    <div className='doctor-onboarding fullpage'>
       <h1>Let's get you on board!</h1>
       <div className="onboarding-container">
+
+        <img style={{ display: img === null ? "none" : "flex", width: "120px", height: "120px", border: "2px solid grey", borderRadius: "60px", objectFit: "cover" }} src={img} alt="" />
 
         <FileBase64
           multiple={false}
           onDone={({ base64 }) => setImg(base64)} />
 
         <div className="contact-info">
+
           <input onChange={(e) => setCity(e.target.value)} type="text" placeholder='City' value={city} />
+
           <input onChange={(e) => setCountry(e.target.value)} type="text" placeholder='Country' value={country} />
+
         </div>
 
         <div className="experience">
@@ -125,16 +130,16 @@ export default function DoctorOnboarding() {
 
         <div className="specialities-container">
 
-          <p>What is your speciality?</p>
+          <p>{speciality === "" ? "What is your speciality?" : "I am a " + speciality}</p>
 
           <button onClick={() => {
             setShowMenu(!showMenu)
-          }}>Speciality<span style={{ transform: showMenu === true ? "rotate(180deg)" : "rotate(0deg)", transition: "0.5s" }}>▼</span></button>
+          }}>Select</button>
 
           <div style={{ display: showMenu === true ? "flex" : "none" }} className="specialities" onMouseLeave={() => { setShowMenu(false) }}>
             {specialities.map(l => {
               return (
-                <p onClick={() => {
+                <p style={{ background: speciality === l ? "#22c55e" : "white", color: speciality === l ? "white" : "black" }} onClick={() => {
                   setSpeciality(l);
                   setShowMenu(false)
                 }} key={l}>{l}</p>
@@ -143,36 +148,36 @@ export default function DoctorOnboarding() {
 
           </div>
         </div>
-
-        <div className="days-container">
-          <p>Select the days you are available</p>
-          <button onClick={() => {
-            setShowDays(!showDays)
-          }}>Days</button>
-          <div className="days" style={{ display: showDays === true ? "flex" : "none" }} onMouseLeave={() => { setShowDays(false) }}>
-            {allDays.map(d => {
-              return (
-                <p onClick={() => {
-                  addDays(d);
-                }} style={{ border: days.includes(d) ? "2px solid yellowgreen" : "2px solid transparent" }} key={d}>{d}</p>
-              )
-            })}
+        <div className="day-time-container">
+          <div className="days-container">
+            <p>Select the days you are available</p>
+            <button onClick={() => {
+              setShowDays(!showDays)
+            }}>Select</button>
+            <div className="days" style={{ display: showDays === true ? "flex" : "none" }} onMouseLeave={() => { setShowDays(false) }}>
+              {allDays.map(d => {
+                return (
+                  <p onClick={() => {
+                    addDays(d);
+                  }} style={{ background: days.includes(d) ? "#22c55e" : "white", color: days.includes(d) ? "white" : "black" }} key={d}>{d}</p>
+                )
+              })}
+            </div>
           </div>
-        </div>
-
-        <div className="times-container">
-          <p>Select the timings you are available</p>
-          <button onClick={() => {
-            setShowTimes(!showTimes)
-          }}>Timings</button>
-          <div className="times" style={{ display: showTimes === true ? "flex" : "none" }} onMouseLeave={() => { setShowTimes(false) }}>
-            {allTimes.map(t => {
-              return (
-                <p onClick={() => {
-                  addTimes(t);
-                }} style={{ border: times.includes(t) ? "2px solid yellowgreen" : "2px solid transparent" }} key={t}>{t}</p>
-              )
-            })}
+          <div className="times-container">
+            <p>Select the timings you are available</p>
+            <button onClick={() => {
+              setShowTimes(!showTimes)
+            }}>Select</button>
+            <div className="times" style={{ display: showTimes === true ? "flex" : "none" }} onMouseLeave={() => { setShowTimes(false) }}>
+              {allTimes.map(t => {
+                return (
+                  <p onClick={() => {
+                    addTimes(t);
+                  }} style={{ background: times.includes(t) ? "#22c55e" : "white", color: times.includes(t) ? "white" : "black" }} key={t}>{t}</p>
+                )
+              })}
+            </div>
           </div>
         </div>
 
@@ -183,7 +188,7 @@ export default function DoctorOnboarding() {
           <input type="text" onChange={(e) => setQualification(e.target.value)} placeholder="Qualifications" value={qualification} />
         </div>
 
-        <button onClick={() => { onboard() }} className="submit">Submit</button>
+        <button onClick={() => { onboard() }} className="save-btn">Save</button>
 
       </div>
     </div>

@@ -67,10 +67,12 @@ export default function PatientOnboarding() {
 
   }
   return (
-    <div className='patient-onboarding page'>
+    <div className='patient-onboarding fullpage'>
+
       <h1>Tell us about yourself</h1>
       <p>This will help us serve your better.</p>
       <div className="onboarding-container">
+        <img style={{ display: img === null ? "none" : "flex", width: "120px", height: "120px", border: "2px solid grey", borderRadius: "60px", objectFit: "cover" }} src={img} alt="" />
         <FileBase64
           multiple={false}
           onDone={({ base64 }) => setImg(base64)} />
@@ -88,16 +90,17 @@ export default function PatientOnboarding() {
 
         <div className="specialities-container">
 
-          <p>What kind of a doctor are you looking for?</p>
+          <p>{lookingfor === "" ? "What kind of a doctor are you looking for?" : "I am looking for a " + lookingfor}</p>
 
           <button onClick={() => {
             setShowMenu(!showMenu)
-          }}>Speciality<span style={{ transform: showMenu === true ? "rotate(180deg)" : "rotate(0deg)", transition: "0.5s" }}>▼</span></button>
+          }}>Select</button>
+
 
           <div style={{ display: showMenu === true ? "flex" : "none" }} className="specialities" onMouseLeave={() => { setShowMenu(false) }}>
             {specialities.map(l => {
               return (
-                <p onClick={() => {
+                <p style={{ background: lookingfor === l ? "#22c55e" : "white", color: lookingfor === l ? "white" : "black" }} onClick={() => {
                   setLookingfor(l);
                   setShowMenu(false)
                 }} key={l}>{l}</p>
@@ -113,7 +116,7 @@ export default function PatientOnboarding() {
           <input onChange={(e) => setGender(e.target.value)} type="text" placeholder='Gender' value={gender} />
         </div>
 
-        <button onClick={() => { onboard() }} className="submit">Submit</button>
+        <button onClick={() => { onboard() }} className="save-btn">Save</button>
       </div>
     </div>
   )

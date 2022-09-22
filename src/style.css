@@ -10,6 +10,7 @@
 body {
     min-height: 100vh;
     width: 100vw;
+    overflow-x: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -34,6 +35,30 @@ button {
     align-items: center;
     padding: 5px 15px;
     cursor: pointer;
+    border: none;
+    border-radius: 5px;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    border-radius: 50px;
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    border-radius: 50px;
+    background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }
 
 header {
@@ -42,14 +67,30 @@ header {
     top: 0;
     left: 0;
     right: 0;
-    border: 2px solid black;
+    box-shadow: 0 5px 10px 2px rgba(0, 0, 0, 0.2);
+    background-color: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
     display: flex;
     align-items: center;
+
 }
 
+nav {
+    padding: 0 10px;
+    display: flex;
+    width: 100%;
+    max-width: 1440px;
+    justify-content: space-between;
+}
+
+.logout-btn {
+    background-color: crimson;
+    color: white;
+}
 
 .page {
-    padding-top: 100px;
+    padding: 100px 10px 10px 10px;
     display: flex;
     min-height: 100vh;
     flex-direction: column;
@@ -57,6 +98,16 @@ header {
     align-items: center;
     width: 100vw;
     max-width: 1440px;
+}
+
+.fullpage {
+    padding: 100px 10px 10px 10px;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100vw;
 }
 
 /*LANDING PAGE */
@@ -76,76 +127,157 @@ header {
 
 
 /*PATIENT ONBOARDING PAGE */
-.patient-onboarding {
-    justify-content: center;
+.patient-onboarding,
+.doctor-onboarding {
+    background-image: url("./backgrounds/onboarding.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+}
+
+.patient-onboarding input,
+.doctor-onboarding input {
+    background-color: white;
+    border: 2px solid rgb(240, 240, 240);
+    height: 40px;
+    width: 100%;
+    border-radius: 5px;
+    padding: 5px 10px;
+    outline: none;
+}
+
+.patient-onboarding p,
+.doctor-onboarding p {
+    color: rgb(90, 90, 90);
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.contact-info {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
 }
 
 .onboarding-container {
-    border: 2px solid black;
+    margin-top: 50px;
+    background-color: #f7f8f9;
+    padding: 20px;
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 2px 2px 10px 3px rgba(0, 0, 0, 0.2);
 }
 
-.conditions {
+.conditions,
+.experience {
+    width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     flex-direction: column;
 }
 
-.conditions textarea {
+.conditions textarea,
+.experience textarea {
+    margin-top: 5px;
     width: 100%;
+    background-color: white;
+    border: 2px solid rgb(240, 240, 240);
+    height: 100px;
+    border-radius: 5px;
+    padding: 5px 10px;
+    outline: none;
 }
 
 .specialities-container,
-.days-container {
+.days-container,
+.times-container {
+    width: 100%;
     position: relative;
 }
+
+.specialities-container button,
+.days-container button,
+.times-container button {
+    margin-top: 5px;
+    width: 100%;
+    background-color: rgb(200, 200, 200);
+    border: 2px solid rgb(240, 240, 240);
+}
+
+.specialities-container button:hover,
+.days-container button:hover,
+.times-container button:hover {
+    background-color: rgb(190, 190, 190);
+}
+
 
 .specialities,
-.days {
-    z-index: 5;
-    background-color: white;
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    height: 300px;
-    overflow-y: auto;
-    overflow-x: hidden;
-    border: 1px solid black;
-}
-
-.specialities p,
-.days p {
-    padding: 5px;
-    cursor: pointer;
-}
-
-
-/*DOCTOR ONBOARDING PAGE*/
-.times-container {
-    position: relative;
-}
-
+.days,
 .times {
     z-index: 5;
     background-color: white;
     position: absolute;
     display: flex;
-    width: 300px;
-    height: 300px;
+    flex-direction: column;
+    width: 100%;
+    max-height: 200px;
     overflow-y: auto;
+    overflow-x: hidden;
+    border-radius: 5px;
+    box-shadow: 2px 2px 10px 3px rgba(0, 0, 0, 0.2);
+}
+
+.specialities button,
+.days button,
+.times button {
+    border: 2px solid grey;
+}
+
+.specialities p,
+.days p,
+.times p {
+    padding: 10px;
+    margin: 3px;
+    cursor: pointer;
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+}
+
+.save-btn {
+    width: 100%;
+    background-color: #22c55e;
+    height: 35px;
+    font-size: 15px;
+    letter-spacing: 1px;
+    color: white;
+}
+
+.health-data,
+.other-data {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+
+/*DOCTOR ONBOARDING PAGE*/
+.times {
+    flex-direction: row;
     flex-wrap: wrap;
-    border: 1px solid black;
     justify-content: center;
 }
 
-.times p {
-    cursor: pointer;
-    margin: 5px;
-    border: 1px solid black;
+.day-time-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
 }
-
 
 /*PATIENT HOME PAGE*/
 
@@ -212,6 +344,14 @@ header {
     align-items: center;
 }
 
-.consultation-container span{
+.consultation-container span {
     margin: 0 3px;
+}
+
+
+/*DOCTOR HOME PAGE*/
+
+.dh-consultation {
+    border: 2px solid black;
+
 }
