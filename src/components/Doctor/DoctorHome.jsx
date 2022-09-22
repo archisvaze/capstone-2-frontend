@@ -15,6 +15,8 @@ export default function DoctorHome() {
   const navigate = useNavigate();
 
   const [consultations, setConsultations] = useState([])
+  const [showNotes, setShowNotes] = useState(false)
+  const [patient, setPatient] = useState({})
 
   useEffect(() => {
     if (state.isLoggedIn === false) {
@@ -65,12 +67,29 @@ export default function DoctorHome() {
 
                 <div className="dh-actions">
                   <button style={{ backgroundColor: "crimson" }}>Cancel</button>
-                  <button style={{ backgroundColor: "#22c55e" }}>Mark Done</button>
+                  <button onClick={() => {
+                    setPatient({});
+                    setPatient(obj.patient)
+                    setShowNotes(true)
+                  }} style={{ backgroundColor: "#22c55e" }}>Mark Done</button>
                 </div>
               </div>
             )
           }
         })}
+      </div>
+
+      <div style={{ display: showNotes === true ? "flex" : "none" }} className="notes-container">
+
+        <div className="notes">
+          <p>Add Notes / Prescriptions for <img src={profile} alt="" />{patient?.username}</p>
+          <textarea style={{ resize: "none" }} rows="4" type="text" />
+          <button style={{ backgroundColor: "#22c55e" }}>Mark Done</button>
+
+        </div>
+        <div onClick={() => {
+          setShowNotes(false)
+        }} className="filter"></div>
       </div>
 
     </div>
