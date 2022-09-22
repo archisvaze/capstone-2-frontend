@@ -43,7 +43,10 @@ header {
     left: 0;
     right: 0;
     border: 2px solid black;
+    display: flex;
+    align-items: center;
 }
+
 
 .page {
     padding-top: 100px;

@@ -1,12 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 let startState = {
+    accessToken: "",
     isLoggedIn: false,
     user: {},
     consultation: {}
 };
 
-if (localStorage.getItem("user-data")) {
-    startState.user = JSON.parse(localStorage.getItem("user-data"))
+if (localStorage.getItem("docseek-data")) {
+    startState = JSON.parse(localStorage.getItem("docseek-data"))
     startState.isLoggedIn = true;
 }
 
@@ -16,17 +17,26 @@ const mySlice = createSlice({
     reducers: {
         setLogin: (state, action) => {
             state.user = action.payload.user;
-            state.user.accessToken = action.payload.accessToken;
+            state.accessToken = action.payload.accessToken;
             state.isLoggedIn = true;
-            localStorage.setItem("user-data", JSON.stringify(state.user))
+            localStorage.setItem("docseek-data", JSON.stringify(state))
         },
         setConsultation: (state, action) => {
             state.consultation = {};
             state.consultation.doctor = action.payload.doctor;
             state.consultation.patient = action.payload.patient;
+        },
+        setLogout: (state, action) => {
+            localStorage.clear();
+            state.user = {};
+            state.isLoggedIn = false;
+            state.consultation = {}
+        },
+        setOnboard: (state, action) => {
+            state.user = action.payload;
         }
     }
 })
 
-export const { setLogin, setConsultation } = mySlice.actions;
+export const { setLogin, setConsultation, setLogout, setOnboard } = mySlice.actions;
 export default mySlice.reducer;

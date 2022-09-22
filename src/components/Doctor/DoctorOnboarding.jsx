@@ -1,15 +1,13 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import FileBase64 from 'react-file-base64';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { specialities } from "../../specialities"
 import { allDays, allTimes } from "../../times"
+import { setLogout, setOnboard } from '../../slices/mySlice';
 
 export default function DoctorOnboarding() {
-
-
-
-
+  const dispatch = useDispatch();
   const state = useSelector((state) => state.myState);
   const navigate = useNavigate();
 
@@ -27,6 +25,15 @@ export default function DoctorOnboarding() {
   const [showDays, setShowDays] = useState(false)
   const [showTimes, setShowTimes] = useState(false)
 
+  useEffect(() => {
+    if (state.isLoggedIn === false) {
+      dispatch(setLogout())
+      navigate("/")
+    } else if (state.user.doctor_id === undefined) {
+      dispatch(setLogout())
+      navigate("/")
+    }
+  }, [])
 
 
   function onboard() {
@@ -46,7 +53,7 @@ export default function DoctorOnboarding() {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        "Authorization": `Bearer ${state.user.accessToken}`
+        "Authorization": `Bearer ${state.accessToken}`
       },
       body: JSON.stringify({ email: state.user.email, city, country, speciality, cost, img, hospital, experience, days, times, qualification })
     }
@@ -57,6 +64,7 @@ export default function DoctorOnboarding() {
         console.log(data)
         if (data.error) { }
         else {
+          dispatch(setOnboard(data))
           navigate("/doctor-home")
         }
       })

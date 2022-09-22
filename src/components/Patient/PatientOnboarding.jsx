@@ -1,13 +1,25 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react';
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import FileBase64 from 'react-file-base64';
 import { specialities } from "../../specialities"
 import { useNavigate } from 'react-router-dom';
+import { setLogout, setOnboard } from '../../slices/mySlice';
 
 export default function PatientOnboarding() {
+  const dispatch = useDispatch();
   const state = useSelector((state) => state.myState);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (state.isLoggedIn === false) {
+      dispatch(setLogout())
+      navigate("/")
+    } else if (state.user.patient_id === undefined) {
+      dispatch(setLogout())
+      navigate("/")
+    }
+  }, [])
 
   const [city, setCity] = useState("");
   const [country, setCountry] = useState("")
@@ -36,7 +48,7 @@ export default function PatientOnboarding() {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        "Authorization": `Bearer ${state.user.accessToken}`
+        "Authorization": `Bearer ${state.accessToken}`
       },
       body: JSON.stringify({ email: state.user.email, city, country, conditions, age, bloodgroup, gender, img, phone, lookingfor })
     }
@@ -47,6 +59,7 @@ export default function PatientOnboarding() {
         console.log(data)
         if (data.error) { }
         else {
+          dispatch(setOnboard(data))
           navigate("/patient-home")
         }
       })

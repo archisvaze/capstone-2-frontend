@@ -1,8 +1,17 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { setLogout } from '../slices/mySlice';
 
 export default function Landing() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const state = useSelector((state) => state.myState);
+
+  useEffect(() => {
+    dispatch(setLogout())
+  }, [])
+
   return (
     <div className='landing page'>
       <section>

@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Rating } from '@mui/material';
-import Consultation from '../Consultation';
-import { setConsultation } from '../../slices/mySlice';
+import Consultation from './Consultation';
+import { useNavigate } from 'react-router-dom';
+import { setConsultation, setLogout } from '../../slices/mySlice';
 
 export default function PatientHome() {
   const dispatch = useDispatch();
   const state = useSelector((state) => state.myState);
+  const navigate = useNavigate();
+
   const [consultations, setConsultations] = useState([])
   const [doctors, setDoctors] = useState([])
   const [speciality, setSpeciality] = useState(null)
@@ -14,7 +17,15 @@ export default function PatientHome() {
   const [showPopUp, setShowPopUp] = useState(false)
 
   useEffect(() => {
-    getDoctors(speciality);
+    if (state.isLoggedIn === false) {
+      dispatch(setLogout())
+      navigate("/")
+    } else if (state.user.patient_id === undefined) {
+      dispatch(setLogout())
+      navigate("/")
+    } else {
+      getDoctors(speciality);
+    }
   }, [])
 
   function getMyConsultations() {
@@ -23,14 +34,14 @@ export default function PatientHome() {
 
   function getDoctors(speciality) {
     if (speciality === null || speciality === undefined) {
-      fetch(`http://localhost:8000/doctor/`, { method: 'get', headers: { "Authorization": `Bearer ${state.user.accessToken}` } })
+      fetch(`http://localhost:8000/doctor/`, { method: 'get', headers: { "Authorization": `Bearer ${state.accessToken}` } })
         .then(res => res.json())
         .then(data => {
           console.log(data)
           setDoctors(data)
         })
     } else {
-      fetch(`http://localhost:8000/doctor/${speciality}`, { method: 'get', headers: { "Authorization": `Bearer ${state.user.accessToken}` } })
+      fetch(`http://localhost:8000/doctor/${speciality}`, { method: 'get', headers: { "Authorization": `Bearer ${state.accessToken}` } })
         .then(res => res.json())
         .then(data => {
           console.log(data)
