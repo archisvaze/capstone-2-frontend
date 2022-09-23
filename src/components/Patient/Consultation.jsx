@@ -11,9 +11,7 @@ export default function Consultation(props) {
     const patient = state.consultation.patient;
 
     const [date, setDate] = useState(new Date());
-    console.log(date)
     const [time, setTime] = useState("");
-
     const [times, setTimes] = useState([])
 
     function getTimes() {
@@ -30,7 +28,13 @@ export default function Consultation(props) {
         }
     }
 
-
+    function setnewDate() {
+        console.log(date)
+        const localDate = new Date(date).toISOString();
+        const newDate = localDate.split("T")[0];
+        console.log(newDate)
+        return newDate;
+    }
 
     useEffect(() => {
         getTimes();
@@ -41,8 +45,7 @@ export default function Consultation(props) {
             console.log("all fields muust be filled");
             return;
         }
-        let updatedDate = new Date(date).getDay();
-        let newDate = `${date.year}-${date.month}-${date.day}`;
+        let newDate = setnewDate();
         const reqOptions = {
             method: 'POST',
             headers: {
@@ -67,7 +70,10 @@ export default function Consultation(props) {
             <div className="calendar">
                 <p className='select-date'>Select a Date</p>
                 <p className='availability'>Availability:  every {doctor?.days.map(day => <span key={day}>{day}</span>)}</p>
-                <Calendar onChange={setDate} value={date} />
+                <Calendar
+                    onChange={setDate}
+                    value={date}
+                />
             </div>
 
             <div className="consultation-info-container">
@@ -79,7 +85,7 @@ export default function Consultation(props) {
 
                 <div className="consultation-times-container">
 
-                    {doctor?.days.includes(allDays[new Date(`${date.year}-${date.month}-${date.day}`).getDay()]) ? times.map(t => {
+                    {doctor?.days.includes(allDays[new Date(date).getDay()]) ? times.map(t => {
                         return (
                             <p style={{ backgroundColor: time === t ? "#0eca2d" : "white", color: time === t ? "white" : "black" }} onClick={() => {
                                 setTime(t)
