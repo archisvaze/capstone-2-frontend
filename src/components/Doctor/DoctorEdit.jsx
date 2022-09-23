@@ -1,113 +1,113 @@
 import React, { useEffect, useState } from 'react'
-// import FileBase64 from 'react-file-base64';
-// import { useSelector, useDispatch } from 'react-redux';
-// import { useNavigate } from 'react-router-dom';
-// import { specialities } from "../../specialities"
-// import { allDays, allTimes } from "../../times"
-// import { setLogout, setOnboard } from '../../slices/mySlice';
+import FileBase64 from 'react-file-base64';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { specialities } from "../../specialities"
+import { allDays, allTimes } from "../../times"
+import { setLogout, setOnboard } from '../../slices/mySlice';
 
 export default function DoctorEdit() {
-    console.log("hello")
-//   const dispatch = useDispatch();
-//   const state = useSelector((state) => state.myState);
-//   const navigate = useNavigate();
+  console.log("hello")
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state.myState);
+  const navigate = useNavigate();
 
-//   const [city, setCity] = useState(state.user.city);
-//   const [country, setCountry] = useState(state.user.country)
-//   const [img, setImg] = useState(state.user.img)
-//   const [speciality, setSpeciality] = useState(state.user.speciality)
-//   const [showMenu, setShowMenu] = useState(false)
-//   const [qualification, setQualification] = useState(state.user.qualification)
-//   const [experience, setExperience] = useState(state.user.experience)
-//   const [hospital, setHospital] = useState(state.user.hospital)
-//   const [cost, setCost] = useState(state.user.cost)
-//   const [days, setDays] = useState(state.user.days)
-//   const [times, setTimes] = useState(state.user.times)
-//   const [showDays, setShowDays] = useState(false)
-//   const [showTimes, setShowTimes] = useState(false)
+  const [city, setCity] = useState(state.user.city);
+  const [country, setCountry] = useState(state.user.country)
+  const [img, setImg] = useState(state.user.img)
+  const [speciality, setSpeciality] = useState(state.user.speciality)
+  const [showMenu, setShowMenu] = useState(false)
+  const [qualification, setQualification] = useState(state.user.qualification)
+  const [experience, setExperience] = useState(state.user.experience)
+  const [hospital, setHospital] = useState(state.user.hospital)
+  const [cost, setCost] = useState(state.user.cost)
+  const [days, setDays] = useState(state.user.days)
+  const [times, setTimes] = useState(state.user.times)
+  const [showDays, setShowDays] = useState(false)
+  const [showTimes, setShowTimes] = useState(false)
 
-//   useEffect(() => {
-//     if (state.isLoggedIn === false) {
-//       dispatch(setLogout())
-//       navigate("/")
-//     } else if (state.user.doctor_id === undefined) {
-//       dispatch(setLogout())
-//       navigate("/")
-//     }
-//   }, [])
+  useEffect(() => {
+    if (state.isLoggedIn === false) {
+      dispatch(setLogout())
+      navigate("/")
+    } else if (state.user.doctor_id === undefined) {
+      dispatch(setLogout())
+      navigate("/")
+    }
+  }, [])
 
 
-//   function onboard() {
-//     if (city.length <= 1 ||
-//       country.length <= 1 ||
-//       speciality.length <= 1 ||
-//       qualification.length < 1 ||
-//       experience < 1 ||
-//       cost <= 1 ||
-//       hospital.length <= 1 ||
-//       days.length < 1 ||
-//       times.length < 1) {
-//       console.log("all fields must be filled")
-//       return;
-//     }
-//     const reqOptions = {
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json',
-//         "Authorization": `Bearer ${state.accessToken}`
-//       },
-//       body: JSON.stringify({ email: state.user.email, city, country, speciality, cost, img, hospital, experience, days, times, qualification })
-//     }
+  function onboard() {
+    if (city.length <= 1 ||
+      country.length <= 1 ||
+      speciality.length <= 1 ||
+      qualification.length < 1 ||
+      experience < 1 ||
+      cost <= 1 ||
+      hospital.length <= 1 ||
+      days.length < 1 ||
+      times.length < 1) {
+      console.log("all fields must be filled")
+      return;
+    }
+    const reqOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        "Authorization": `Bearer ${state.accessToken}`
+      },
+      body: JSON.stringify({ email: state.user.email, city, country, speciality, cost, img, hospital, experience, days, times, qualification })
+    }
 
-//     fetch(`http://localhost:8000/doctor/onboard/`, reqOptions)
-//       .then(res => res.json())
-//       .then(data => {
-//         console.log(data)
-//         if (data.error) { }
-//         else {
-//           dispatch(setOnboard(data))
-//           navigate("/doctor-home")
-//         }
-//       })
-//   }
+    fetch(`http://localhost:8000/doctor/onboard/`, reqOptions)
+      .then(res => res.json())
+      .then(data => {
+        console.log(data)
+        if (data.error) { }
+        else {
+          dispatch(setOnboard(data))
+          navigate("/doctor-home")
+        }
+      })
+  }
 
-//   function addDays(day) {
-//     let clone = JSON.parse(JSON.stringify(days))
-//     if (clone.includes(day)) {
-//       for (let i = 0; i < clone.length; i++) {
-//         if (clone[i] === day) {
-//           clone.splice(i, 1)
-//           setDays([...clone]);
-//           return;
-//         }
-//       }
-//     } else {
-//       setDays([...days, day])
-//       return;
-//     }
-//   }
+  function addDays(day) {
+    let clone = JSON.parse(JSON.stringify(days))
+    if (clone.includes(day)) {
+      for (let i = 0; i < clone.length; i++) {
+        if (clone[i] === day) {
+          clone.splice(i, 1)
+          setDays([...clone]);
+          return;
+        }
+      }
+    } else {
+      setDays([...days, day])
+      return;
+    }
+  }
 
-//   function addTimes(time) {
-//     let clone = JSON.parse(JSON.stringify(times))
-//     if (clone.includes(time)) {
-//       for (let i = 0; i < clone.length; i++) {
-//         if (clone[i] === time) {
-//           clone.splice(i, 1)
-//           setTimes([...clone]);
-//           return;
-//         }
-//       }
-//     } else {
-//       setTimes([...times, time])
-//       return;
-//     }
-//   }
+  function addTimes(time) {
+    let clone = JSON.parse(JSON.stringify(times))
+    if (clone.includes(time)) {
+      for (let i = 0; i < clone.length; i++) {
+        if (clone[i] === time) {
+          clone.splice(i, 1)
+          setTimes([...clone]);
+          return;
+        }
+      }
+    } else {
+      setTimes([...times, time])
+      return;
+    }
+  }
 
 
   return (
     <div className='doctor-onboarding fullpage'>
-      <h1>Let's get you on board!</h1>
-      {/* <div className="onboarding-container">
+      <h2>Edit Your Profile Settings</h2>
+      <div className="onboarding-container">
 
         <img style={{ display: img === null ? "none" : "flex", width: "120px", height: "120px", border: "2px solid grey", borderRadius: "60px", objectFit: "cover" }} src={img} alt="" />
 
@@ -191,7 +191,7 @@ export default function DoctorEdit() {
 
         <button onClick={() => { onboard() }} className="save-btn">Save</button>
 
-      </div> */}
+      </div>
     </div>
   )
 }

@@ -29,16 +29,14 @@ export default function Header() {
                 <div className="header-actions-container">
 
                     {/* Doctor */}
-                    <div className="user-header-actions">
+                    <div style={{ display: state.isLoggedIn === false ? "none" : state.user.doctor_id ? "flex" : "none" }} className="user-header-actions">
+                      <a onClick={() => {
+                        navigate("/doctor-home")
+                      }}>Consultations</a>
 
-                      
-                      <p>Consultations</p>
-
-                      <p onClick={() => {
+                      <a onClick={() => {
                         navigate("/doctor-edit")
-                      }}>Edit Profile</p>
-
-
+                      }}>Edit Profile</a>
                     </div>
 
 

@@ -6,17 +6,9 @@ import profile from "../../icons/profile.svg";
 import ConsultationCard from './ConsultationCard';
 import PreviousConsultation from './PreviousConsultation';
 import { allDays } from '../../times';
+import Calendar from 'react-calendar';
 
 export default function DoctorHome() {
-  let today = new Date().toISOString().split("T")[0];
-  let year = Number(today.split("-")[0])
-  let month = Number(today.split("-")[1])
-  let day = Number(today.split("-")[2])
-  const defaultValue = {
-    year: year,
-    month: month,
-    day: day,
-  };
   const dispatch = useDispatch();
   const state = useSelector((state) => state.myState);
   const navigate = useNavigate();
@@ -26,7 +18,8 @@ export default function DoctorHome() {
   const [patient, setPatient] = useState({})
   const [consultationID, setConsultationID] = useState("")
   const [notes, setNotes] = useState('')
-  const [date, setDate] = useState(defaultValue)
+  const [date, setDate] = useState(new Date())
+  const [formatedDate, setFormatedDate] = useState("")
   const [earnings, setEarnings] = useState(0)
 
   useEffect(() => {
@@ -65,6 +58,18 @@ export default function DoctorHome() {
       dispatch(setAlert([text, false, flag]))
     }, 2000)
   }
+
+  function setnewDate() {
+    console.log(date)
+    const localDate = new Date(date).toISOString();
+    const newDate = localDate.split("T")[0];
+    console.log(newDate)
+    return newDate;
+  }
+
+  useEffect(() => {
+    setFormatedDate(setnewDate())
+  }, [date])
 
 
   function getConsultations() {
@@ -115,22 +120,21 @@ export default function DoctorHome() {
   return (
     <div className='doctor-home page'>
       <div className="dh-top">
-        {/* <Calendar
-          value={date}
+        <Calendar
           onChange={setDate}
-          shouldHighlightWeekends
-        /> */}
+          value={date}
+        />
         <div className="dh-upcoming-container">
-          <h3>{allDays[new Date(`${date.year}-${date.month}-${date.day}`).getDay()]}'s Appointments</h3>
+          <h3>{allDays[new Date(date).getDay()]}'s Appointments</h3>
           <div className="upcoming-consultations-container">
             {consultations.map(obj => {
-              if (obj?.status === false && obj?.date === `${date.year}-${date.month}-${date.day}`) {
+              if (obj?.status === false && obj?.date === formatedDate) {
 
                 return (
                   <ConsultationCard key={obj._id} obj={obj} setNotes={setNotes} setConsultationID={setConsultationID} setPatient={setPatient} setShowNotes={setShowNotes} cancelConsultation={cancelConsultation} />
                 )
-              }else{
-                return(<h1>TEST</h1>)
+              } else {
+                return (<></>)
               }
             })}
           </div>
@@ -176,9 +180,9 @@ export default function DoctorHome() {
               return (
                 <PreviousConsultation key={obj._id} obj={obj} />
               )
-            }else{
+            } else {
               return (
-                <h1>TEST</h1>
+                <></>
               )
             }
           })}
