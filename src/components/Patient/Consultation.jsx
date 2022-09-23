@@ -1,6 +1,11 @@
 import { spacing } from '@mui/system';
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
+import 'react-modern-calendar-datepicker/lib/DatePicker.css';
+import DatePicker from 'react-modern-calendar-datepicker';
+import { Calendar } from "react-modern-calendar-datepicker";
+import { allDays } from '../../times';
+
 
 export default function Consultation(props) {
     const state = useSelector((state) => state.myState);
@@ -11,8 +16,6 @@ export default function Consultation(props) {
     const [time, setTime] = useState("");
 
     const [times, setTimes] = useState([])
-
-    const minDate = new Date().toISOString().split("T")[0];
 
     function getTimes() {
         if (date.length <= 1) {
@@ -38,6 +41,7 @@ export default function Consultation(props) {
             console.log("all fields muust be filled");
             return;
         }
+        let newDate = `${date.year}-${date.month}-${date.day}`;
         const reqOptions = {
             method: 'POST',
             headers: {
@@ -46,7 +50,7 @@ export default function Consultation(props) {
             },
             body: JSON.stringify({
                 patient_id: patient.patient_id,
-                doctor_id: doctor.doctor_id, time, date
+                doctor_id: doctor.doctor_id, time, date: newDate
             })
         }
         fetch(`http://localhost:8000/consultation/`, reqOptions)
@@ -59,22 +63,37 @@ export default function Consultation(props) {
 
     return (
         <div className='consultation-container'>
-            <h3>Book an appointment with Dr {doctor?.username}</h3>
-            <p>Select a Date</p>
-            <p>Availability:  every {doctor?.days.map(day => <span key={day}>{day}</span>)}</p>
-            <input onChange={(e) => {
-                setDate(e.target.value)
-            }} type="date" name="" id="" min={minDate} />
-            <div className="consultation-times-container">
-                {times.map(t => {
-                    return (
-                        <p style={{ border: time === t ? "2px solid yellowgreen" : "2px solid transparent" }} onClick={() => {
-                            setTime(t)
-                        }} key={t}>{t}</p>
-                    )
-                })}
+            <div className="calendar">
+                <p className='select-date'>Select a Date</p>
+                <p className='availability'>Availability:  every {doctor?.days.map(day => <span key={day}>{day}</span>)}</p>
+                <Calendar
+                    value={date}
+                    onChange={setDate}
+                    shouldHighlightWeekends
+                />
             </div>
-            <button onClick={() => bookConsultation()}>Book</button>
+
+            <div className="consultation-info-container">
+                <div className="consultation-doctor-info">
+                    <img style={{ width: "90px", height: "90px", borderRadius: "100px", objectFit: 'cover' }} src={doctor?.img} alt="" />
+                    <h3>Book an appointment with Dr {doctor?.username}</h3>
+                </div>
+
+
+                <div className="consultation-times-container">
+
+                    {doctor?.days.includes(allDays[new Date(`${date.year}-${date.month}-${date.day}`).getDay()]) ? times.map(t => {
+                        return (
+                            <p style={{ backgroundColor: time === t ? "#0eca2d" : "white", color: time === t ? "white" : "black" }} onClick={() => {
+                                setTime(t)
+                            }} key={t}>{t}</p>
+                        )
+                    }) : <p style={{ border: "none" }}>No Consultations on this day</p>}
+                </div>
+
+                <button style={{ backgroundColor: time === "" ? "" : "#0eca2d", color: time === "" ? "black" : "white" }} onClick={() => bookConsultation()}>Book</button>
+            </div>
+
         </div>
     )
 }

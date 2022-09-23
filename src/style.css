@@ -356,53 +356,75 @@ nav {
 
 /*CONSULTATION PAGE*/
 
-.consultation-container,
-.notes {
+.consultation-container {
     background-color: #f7f8f9;
     z-index: 5;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: center;
     border-radius: 5px;
     box-shadow: 2px 2px 10px 3px rgba(0, 0, 0, 0.3);
     padding: 20px;
+    max-width: 900px;
+    gap: 20px;
 }
 
-.consultation-container p,
-.notes p {
-    font-size: 16px;
+.select-date {
     font-weight: bold;
-    letter-spacing: 1px;
+
 }
 
-.consultation-container button,
-.notes button {
-    width: 40%;
-    height: 35px;
-    letter-spacing: 1px;
-    color: white;
+.availability {
+    color: grey;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 10px 0;
 }
 
-.consultation-container textarea,
-.notes textarea {
-    margin: 20px 0;
-    width: 100%;
-    background-color: white;
-    border: 2px solid rgb(240, 240, 240);
-    height: 100px;
+.consultation-info-container {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid grey;
     border-radius: 5px;
-    padding: 5px 10px;
-    outline: none;
-    font-size: 15px;
-    font-weight: bold;
-    letter-spacing: 1px;
-    font-family: 'Cascadia Code', sans-serif;
+    gap: 20px;
+    justify-content: space-between;
+    width: 500px;
 }
 
 .consultation-container span {
     margin: 0 3px;
 }
 
+.consultation-times-container {
+    background-color: rgb(221, 221, 221);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+}
+
+.consultation-times-container p {
+    margin: 10px;
+    border: 2px solid #22c55e;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.consultation-container button {
+    font-size: 16px;
+}
+
+.consultation-doctor-info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
 
 /*DOCTOR HOME PAGE*/
 
@@ -473,8 +495,135 @@ nav {
     color: white;
 }
 
+.notes {
+    background-color: #f7f8f9;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 5px;
+    box-shadow: 2px 2px 10px 3px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+}
+
+.notes button {
+    width: 40%;
+    height: 35px;
+    letter-spacing: 1px;
+    color: white;
+}
+
+
 .notes p {
     display: flex;
     align-items: center;
     gap: 10px;
+}
+
+.notes textarea {
+    margin: 20px 0;
+    width: 100%;
+    background-color: white;
+    border: 2px solid rgb(240, 240, 240);
+    height: 100px;
+    border-radius: 5px;
+    padding: 5px 10px;
+    outline: none;
+    font-size: 15px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-family: 'Cascadia Code', sans-serif;
+}
+
+
+/*Previous Consultations on DOCTORS HOME PAGE*/
+
+.done-consultations-container {
+    width: 100%;
+}
+
+.preivous-consultations-container {
+    margin-top: 20px;
+    width: 100%;
+    background-color: rgb(226, 226, 226);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 5px;
+}
+
+.previous-consultation {
+    background-color: white;
+    width: 95%;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    gap: 20px;
+    border-radius: 5px;
+    max-width: 1200px;
+}
+
+.pc-contact-info {
+    display: flex;
+    align-items: center;
+    width: 20%;
+    gap: 10px;
+}
+
+.pc-contact {
+    display: flex;
+    flex-direction: column;
+}
+
+.pc-rating {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 14px;
+    width: 20%;
+}
+
+.pc-time {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: bold;
+    width: 20%;
+}
+
+.pc-phone {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    width: 20%;
+}
+
+.pc-notes {
+    font-weight: bold;
+    background-color: rgb(226, 226, 226);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+    width: 20%;
+    font-size: 14px;
+}
+
+.pc-notes p {
+    font-family: 'Cascadia Code', sans-serif;
+}
+
+.titles p {
+    width: 20%;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.titles {
+    margin-top: 10px;
+    background-color: inherit;
 }
