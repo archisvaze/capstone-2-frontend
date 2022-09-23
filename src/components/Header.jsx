@@ -10,8 +10,8 @@ export default function Header() {
     const navigate = useNavigate();
     return (
         <header>
-            
-            <div style={{ top: state.alert[1] === true ? "90px" : "-20vh", backgroundColor: state.alert[2] === "error" ? "crimson" : "mediumseagreen" }} className="alert">{state.alert[0]}</div>
+
+            <div style={{ top: state.alert[1] === true ? "90px" : "-20vh", backgroundColor: state.alert[2] === "error" ? "crimson" : "#0eca2d" }} className="alert">{state.alert[0]}</div>
 
             <nav>
                 <div className="logo-container">
