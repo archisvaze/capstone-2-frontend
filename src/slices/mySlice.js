@@ -3,7 +3,8 @@ let startState = {
     accessToken: "",
     isLoggedIn: false,
     user: {},
-    consultation: {}
+    consultation: {},
+    alert: ["", false, "error"],
 };
 
 if (localStorage.getItem("docseek-data")) {
@@ -15,6 +16,9 @@ const mySlice = createSlice({
     name: "mySlice",
     initialState: startState,
     reducers: {
+        setAlert: (state, action) => {
+            state.alert = action.payload;
+        },
         setLogin: (state, action) => {
             state.user = action.payload.user;
             state.accessToken = action.payload.accessToken;
@@ -38,5 +42,5 @@ const mySlice = createSlice({
     }
 })
 
-export const { setLogin, setConsultation, setLogout, setOnboard } = mySlice.actions;
+export const { setLogin, setConsultation, setLogout, setOnboard, setAlert } = mySlice.actions;
 export default mySlice.reducer;

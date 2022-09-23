@@ -2,7 +2,6 @@ import { spacing } from '@mui/system';
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
 import 'react-modern-calendar-datepicker/lib/DatePicker.css';
-import DatePicker from 'react-modern-calendar-datepicker';
 import { Calendar } from "react-modern-calendar-datepicker";
 import { allDays } from '../../times';
 

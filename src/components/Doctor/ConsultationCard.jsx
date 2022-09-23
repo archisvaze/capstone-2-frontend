@@ -9,7 +9,8 @@ export default function ConsultationCard(props) {
     let setNotes = props.setNotes
     let setConsultationID = props.setConsultationID
     let setPatient = props.setPatient
-    let setShowNotes = props.setShowNotes
+    let setShowNotes = props.setShowNotes;
+    let cancelConsultation = props.cancelConsultation;
     return (
         <div key={obj._id} className="dh-consultation">
 
@@ -23,10 +24,15 @@ export default function ConsultationCard(props) {
                 <p><img src={clock} alt="" />{obj.time}</p>
             </div>
 
-            <p className='dh-conditions'>{obj.patient.conditions}</p>
+            <div className='dh-conditions'>
+                <p>{obj.patient.conditions}</p> </div>
 
             <div className="dh-actions">
-                <button style={{ backgroundColor: "crimson" }}>Cancel</button>
+                <button
+                    onClick={() => {
+                        cancelConsultation(obj._id)
+                    }}
+                    style={{ backgroundColor: "crimson" }}>Cancel</button>
                 <button onClick={() => {
                     setNotes("")
                     setConsultationID("")

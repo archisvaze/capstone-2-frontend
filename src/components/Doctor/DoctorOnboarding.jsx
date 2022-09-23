@@ -139,7 +139,7 @@ export default function DoctorOnboarding() {
           <div style={{ display: showMenu === true ? "flex" : "none" }} className="specialities" onMouseLeave={() => { setShowMenu(false) }}>
             {specialities.map(l => {
               return (
-                <p style={{ background: speciality === l ? "#22c55e" : "white", color: speciality === l ? "white" : "black" }} onClick={() => {
+                <p style={{ background: speciality === l ? "#0eca2d" : "white", color: speciality === l ? "white" : "black" }} onClick={() => {
                   setSpeciality(l);
                   setShowMenu(false)
                 }} key={l}>{l}</p>
@@ -159,7 +159,7 @@ export default function DoctorOnboarding() {
                 return (
                   <p onClick={() => {
                     addDays(d);
-                  }} style={{ background: days.includes(d) ? "#22c55e" : "white", color: days.includes(d) ? "white" : "black" }} key={d}>{d}</p>
+                  }} style={{ background: days.includes(d) ? "#0eca2d" : "white", color: days.includes(d) ? "white" : "black" }} key={d}>{d}</p>
                 )
               })}
             </div>
@@ -174,7 +174,7 @@ export default function DoctorOnboarding() {
                 return (
                   <p onClick={() => {
                     addTimes(t);
-                  }} style={{ background: times.includes(t) ? "#22c55e" : "white", color: times.includes(t) ? "white" : "black" }} key={t}>{t}</p>
+                  }} style={{ background: times.includes(t) ? "#0eca2d" : "white", color: times.includes(t) ? "white" : "black" }} key={t}>{t}</p>
                 )
               })}
             </div>
