@@ -5,8 +5,6 @@ import { setLogout, setAlert } from '../../slices/mySlice';
 import profile from "../../icons/profile.svg";
 import ConsultationCard from './ConsultationCard';
 import PreviousConsultation from './PreviousConsultation';
-import 'react-modern-calendar-datepicker/lib/DatePicker.css';
-import { Calendar } from "react-modern-calendar-datepicker";
 import { allDays } from '../../times';
 
 export default function DoctorHome() {
@@ -117,11 +115,11 @@ export default function DoctorHome() {
   return (
     <div className='doctor-home page'>
       <div className="dh-top">
-        <Calendar
+        {/* <Calendar
           value={date}
           onChange={setDate}
           shouldHighlightWeekends
-        />
+        /> */}
         <div className="dh-upcoming-container">
           <h3>{allDays[new Date(`${date.year}-${date.month}-${date.day}`).getDay()]}'s Appointments</h3>
           <div className="upcoming-consultations-container">
@@ -131,6 +129,8 @@ export default function DoctorHome() {
                 return (
                   <ConsultationCard key={obj._id} obj={obj} setNotes={setNotes} setConsultationID={setConsultationID} setPatient={setPatient} setShowNotes={setShowNotes} cancelConsultation={cancelConsultation} />
                 )
+              }else{
+                return(<h1>TEST</h1>)
               }
             })}
           </div>
@@ -175,6 +175,10 @@ export default function DoctorHome() {
             if (obj?.status === true) {
               return (
                 <PreviousConsultation key={obj._id} obj={obj} />
+              )
+            }else{
+              return (
+                <h1>TEST</h1>
               )
             }
           })}

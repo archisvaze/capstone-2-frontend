@@ -16,17 +16,37 @@ export default function Header() {
             <nav>
                 <div className="logo-container">
                     <Logo />
+
+                    {/* Doctor */}
                     <div style={{ display: state.isLoggedIn === false ? "none" : state.user.doctor_id ? "flex" : "none" }} className="user-header">
                         <img style={{ width: "30px", height: "30px", borderRadius: "15px", objectFit: "cover" }} src={state.user.img} alt="" />
                         <p style={{ fontWeight: "bold" }}>Dr. {state.user.username}</p>
                     </div>
 
+
                 </div>
 
-                <button onClick={() => {
-                    dispatch(setLogout())
-                    navigate("/")
-                }} className="logout-btn">Logout</button>
+                <div className="header-actions-container">
+
+                    {/* Doctor */}
+                    <div className="user-header-actions">
+
+                      
+                      <p>Consultations</p>
+
+                      <p onClick={() => {
+                        navigate("/doctor-edit")
+                      }}>Edit Profile</p>
+
+
+                    </div>
+
+
+                    <button onClick={() => {
+                        dispatch(setLogout())
+                        navigate("/")
+                    }} className="logout-btn">Logout</button>
+                </div>
             </nav>
         </header>
     )

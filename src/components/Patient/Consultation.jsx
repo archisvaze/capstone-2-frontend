@@ -1,8 +1,6 @@
 import { spacing } from '@mui/system';
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
-import 'react-modern-calendar-datepicker/lib/DatePicker.css';
-import { Calendar } from "react-modern-calendar-datepicker";
 import { allDays } from '../../times';
 
 
@@ -11,7 +9,7 @@ export default function Consultation(props) {
     const doctor = state.consultation.doctor;
     const patient = state.consultation.patient;
 
-    const [date, setDate] = useState("");
+    const [date, setDate] = useState({});
     const [time, setTime] = useState("");
 
     const [times, setTimes] = useState([])
@@ -20,7 +18,7 @@ export default function Consultation(props) {
         if (date.length <= 1) {
             console.log("date is not set")
         }
-        else if (doctor.doctor_id) {
+        else if (doctor?.doctor_id) {
             fetch(`http://localhost:8000/doctor/timings/${doctor.doctor_id}/${date}`, { method: "get", headers: { "Authorization": `Bearer ${state.accessToken}` } })
                 .then(res => res.json())
                 .then(data => {
@@ -65,11 +63,11 @@ export default function Consultation(props) {
             <div className="calendar">
                 <p className='select-date'>Select a Date</p>
                 <p className='availability'>Availability:  every {doctor?.days.map(day => <span key={day}>{day}</span>)}</p>
-                <Calendar
+                {/* <Calendar
                     value={date}
-                    onChange={setDate}
+                    // onChange={setDate}
                     shouldHighlightWeekends
-                />
+                /> */}
             </div>
 
             <div className="consultation-info-container">

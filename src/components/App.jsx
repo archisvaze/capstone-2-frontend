@@ -10,6 +10,7 @@ import DoctorHome from './Doctor/DoctorHome'
 import PatientLogin from './Patient/PatientLogin'
 import PatientOnboarding from './Patient/PatientOnboarding'
 import PatientHome from "./Patient/PatientHome"
+import DoctorEdit from './Doctor/DoctorEdit'
 
 
 
@@ -24,6 +25,7 @@ function App() {
         {/* routes for doctor */}
         <Route path="/doctor-login" element={<DoctorLogin />} />
         <Route path="/doctor-onboarding" element={<DoctorOnboarding />} />
+        <Route path="/doctor-edit" element={<DoctorEdit />} />
         <Route path="/doctor-home" element={<DoctorHome />} />
 
         {/* routes for patient */}

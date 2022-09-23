@@ -82,6 +82,7 @@ header {
     z-index: 50;
 
 }
+
 .alert {
     position: fixed;
     height: 60px;
@@ -100,12 +101,36 @@ header {
     text-align: center;
     box-shadow: 4px 10px 15px 4px rgba(0, 0, 0, 0.3);
 }
+
 nav {
     padding: 0 10px;
     display: flex;
     width: 100%;
     max-width: 1440px;
     justify-content: space-between;
+}
+
+.header-actions-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.user-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+a {
+    cursor: pointer;
+    text-decoration: none;
+    color: rgb(75, 75, 75);
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
 }
 
 .logout-btn {
