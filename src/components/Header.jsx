@@ -16,6 +16,7 @@ export default function Header() {
             <nav>
                 <div className="logo-container">
                     <Logo />
+                    <p className="logo-text">DOC-Seek</p>
 
                     {/* Doctor */}
                     <div style={{ display: state.isLoggedIn === false ? "none" : state.user.doctor_id ? "flex" : "none" }} className="user-header">
@@ -30,17 +31,17 @@ export default function Header() {
 
                     {/* Doctor */}
                     <div style={{ display: state.isLoggedIn === false ? "none" : state.user.doctor_id ? "flex" : "none" }} className="user-header-actions">
-                      <a onClick={() => {
-                        navigate("/doctor-home")
-                      }}>Consultations</a>
+                        <a onClick={() => {
+                            navigate("/doctor-home")
+                        }}>Consultations</a>
 
-                      <a onClick={() => {
-                        navigate("/doctor-edit")
-                      }}>Edit Profile</a>
+                        <a onClick={() => {
+                            navigate("/doctor-edit")
+                        }}>Edit Profile</a>
                     </div>
 
 
-                    <button onClick={() => {
+                    <button style={{ display: state.isLoggedIn === false ? "none" : "flex" }} onClick={() => {
                         dispatch(setLogout())
                         navigate("/")
                     }} className="logout-btn">Logout</button>

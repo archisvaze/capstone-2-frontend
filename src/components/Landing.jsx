@@ -13,16 +13,21 @@ export default function Landing() {
   }, [])
 
   return (
-    <div className='landing page'>
-      <section>
+    <div className='landing fullpage'>
+      <section className='doctor-section'>
         <h1>I am a doctor</h1>
-        <button onClick={() => { navigate("/doctor-login") }}>login</button>
-        <button>signup</button>
+        <div className="section-actions">
+          <button onClick={() => { navigate("/doctor-login") }}>login</button>
+          <button>signup</button>
+        </div>
+
       </section>
-      <section>
+      <section className='patient-section'>
         <h1>I am looking for a doctor</h1>
-        <button onClick={() => { navigate('/patient-login') }}>login</button>
-        <button>signup</button>
+        <div className="section-actions">
+          <button onClick={() => { navigate('/patient-login') }}>login</button>
+          <button>signup</button>
+        </div>
       </section>
     </div>
   )
