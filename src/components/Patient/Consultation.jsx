@@ -2,6 +2,7 @@ import { spacing } from '@mui/system';
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
 import { allDays } from '../../times';
+import Calendar from 'react-calendar';
 
 
 export default function Consultation(props) {
@@ -9,7 +10,8 @@ export default function Consultation(props) {
     const doctor = state.consultation.doctor;
     const patient = state.consultation.patient;
 
-    const [date, setDate] = useState({});
+    const [date, setDate] = useState(new Date());
+    console.log(date)
     const [time, setTime] = useState("");
 
     const [times, setTimes] = useState([])
@@ -29,6 +31,7 @@ export default function Consultation(props) {
     }
 
 
+
     useEffect(() => {
         getTimes();
     }, [date])
@@ -38,6 +41,7 @@ export default function Consultation(props) {
             console.log("all fields muust be filled");
             return;
         }
+        let updatedDate = new Date(date).getDay();
         let newDate = `${date.year}-${date.month}-${date.day}`;
         const reqOptions = {
             method: 'POST',
@@ -63,11 +67,7 @@ export default function Consultation(props) {
             <div className="calendar">
                 <p className='select-date'>Select a Date</p>
                 <p className='availability'>Availability:  every {doctor?.days.map(day => <span key={day}>{day}</span>)}</p>
-                {/* <Calendar
-                    value={date}
-                    // onChange={setDate}
-                    shouldHighlightWeekends
-                /> */}
+                <Calendar onChange={setDate} value={date} />
             </div>
 
             <div className="consultation-info-container">
