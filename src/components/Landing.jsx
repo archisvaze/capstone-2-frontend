@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { setLogout } from '../slices/mySlice';
+import { motion } from 'framer-motion'
 
 export default function Landing() {
   const dispatch = useDispatch();
@@ -13,22 +14,26 @@ export default function Landing() {
   }, [])
 
   return (
-    <div className='landing fullpage'>
+    <motion.div
+      initial={{ width: 0 }}
+      animate={{ width: "100vw" }}
+      exit={{ width: 0 }}
+      className='landing fullpage'>
       <section className='doctor-section'>
         <h1>I am a doctor</h1>
         <div className="section-actions">
-          <button onClick={() => { navigate("/doctor-login") }}>login</button>
-          <button>signup</button>
+          <button className='login-btn' onClick={() => { navigate("/doctor-login") }}>Login</button>
+          <button className='signup-btn'>Signup</button>
         </div>
 
       </section>
       <section className='patient-section'>
         <h1>I am looking for a doctor</h1>
         <div className="section-actions">
-          <button onClick={() => { navigate('/patient-login') }}>login</button>
-          <button>signup</button>
+          <button className='login-btn' onClick={() => { navigate('/patient-login') }}>Login</button>
+          <button className='signup-btn'>Signup</button>
         </div>
       </section>
-    </div>
+    </motion.div>
   )
 }

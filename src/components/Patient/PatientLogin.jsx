@@ -3,6 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useNavigate } from 'react-router-dom';
 import { setLogin } from '../../slices/mySlice';
 import { useDispatch } from 'react-redux'
+import patient from "../../backgrounds/patient.jpg"
 
 export default function PatientLogin() {
     const dispatch = useDispatch();
@@ -32,71 +33,77 @@ export default function PatientLogin() {
             })
     }
     return (
-        <div className='login page'>
-            <Formik
-                initialValues={{ email: "", password: "" }}
-                validate={(values) => {
-                    const errors = {};
-                    if (!values.email) {
-                        errors.email = "Required";
-                    }
-                    else if (
-                        !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-                    ) {
-                        errors.email = "Invalid Email Address"
-                    }
-                    if (!values.password) {
-                        errors.password = "Required"
-                    }
-                    return errors;
-                }}
+        <div className='login fullpage'>
+            <div className="form-container">
+                <Formik
+                    initialValues={{ email: "", password: "" }}
+                    validate={(values) => {
+                        const errors = {};
+                        if (!values.email) {
+                            errors.email = "Required";
+                        }
+                        else if (
+                            !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
+                        ) {
+                            errors.email = "Invalid Email Address"
+                        }
+                        if (!values.password) {
+                            errors.password = "Required"
+                        }
+                        return errors;
+                    }}
 
-                onSubmit={(values, { setSubmitting }) => {
-                    setSubmitting(false);
-                    login(values);
+                    onSubmit={(values, { setSubmitting }) => {
+                        setSubmitting(false);
+                        login(values);
 
-                    values.email = "";
-                    values.password = "";
-                }}
-            >
-                {({ isSubmitting }) => (
-                    <Form>
+                        values.email = "";
+                        values.password = "";
+                    }}
+                >
+                    {({ isSubmitting }) => (
+                        <Form>
 
-                        <Field
-                            placeholder="Enter email"
-                            name="email" />
-                        <ErrorMessage
-                            style={{ color: "crimson" }}
-                            name="email"
-                            component="div" />
-
-
-                        <Field
-                            placeholder="Enter password"
-                            name="password"
-                            type="password" />
-                        <ErrorMessage
-                            style={{ color: "crimson" }}
-                            name="password"
-                            component="div" />
-
-                        <button
-                            id="submit-btn"
-                            type='submit'
-                            disabled={isSubmitting}
-                        >
-                            Login
-                        </button>
-
-                        <p>Don't have an account? <span onClick={() => {
-                            navigate("/patient-signup")
-                        }} style={{ cursor: "pointer", textDecoration: "underline" }}>Signup</span> instead</p>
-
-                    </Form>
+                            <Field
+                                placeholder="Enter email"
+                                name="email" />
+                            <ErrorMessage
+                                style={{ color: "crimson" }}
+                                name="email"
+                                component="div"
+                                className='error-msg' />
 
 
-                )}
-            </Formik>
+                            <Field
+                                placeholder="Enter password"
+                                name="password"
+                                type="password" />
+                            <ErrorMessage
+                                style={{ color: "crimson" }}
+                                name="password"
+                                component="div"
+                                className='error-msg' />
+
+                            <button
+                                id="submit-btn"
+                                type='submit'
+                                disabled={isSubmitting}
+                            >
+                                Login
+                            </button>
+
+                            <p>Don't have an account? <span onClick={() => {
+                                navigate("/patient-signup")
+                            }} style={{ cursor: "pointer", textDecoration: "underline" }}>Signup</span> instead</p>
+
+                        </Form>
+                    )}
+                </Formik>
+            </div>
+            <div className="background">
+                <img src={patient} alt="" />
+            </div>
+
         </div>
     )
 }
