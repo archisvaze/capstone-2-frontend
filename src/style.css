@@ -1140,7 +1140,7 @@ abbr[title] {
     nav {
         display: flex;
         flex-wrap: wrap;
-        justify-content: center;
+        justify-content: space-evenly;
     }
 
     header {
