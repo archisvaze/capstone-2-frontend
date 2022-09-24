@@ -59,16 +59,18 @@ export default function DoctorHome() {
     }, 4000)
   }
 
-  function setnewDate() {
+  function setnewDate(date) {
     console.log(date)
-    const localDate = new Date(date).toISOString();
-    const newDate = localDate.split("T")[0];
+    let day = new Date(date).getDate();
+    let month = new Date(date).getMonth();
+    let year = new Date(date).getFullYear();
+    let newDate = `${year}-${month + 1}-${day}`
     console.log(newDate)
-    return newDate;
+    setFormatedDate(newDate)
   }
 
   useEffect(() => {
-    setFormatedDate(setnewDate())
+    setnewDate(date)
   }, [date])
 
 

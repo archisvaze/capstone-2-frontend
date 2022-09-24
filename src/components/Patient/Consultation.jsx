@@ -45,7 +45,7 @@ export default function Consultation(props) {
         let day = new Date(date).getDate();
         let month = new Date(date).getMonth();
         let year = new Date(date).getFullYear();
-        let newDate = `${year}-${month}-${day}`
+        let newDate = `${year}-${month + 1}-${day}`
         console.log(newDate)
         setFormatedDate(newDate)
     }
