@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
 import { setLogout } from '../../slices/mySlice';
 import AppointmentCard from './AppointmentCard';
+import PreviousApointment from './PreviousApointment';
 
 export default function Appointments() {
     const dispatch = useDispatch();
@@ -21,7 +22,7 @@ export default function Appointments() {
         } else {
             getAppointments();
         }
-    }, [])
+    }, [state.alert])
 
     function getAppointments() {
         fetch(`http://localhost:8000/consultation/patient/${state.user.patient_id}`, { method: "get", headers: { "Authorization": `Bearer ${state.accessToken}` } })
@@ -50,8 +51,15 @@ export default function Appointments() {
                 })}
             </div>
 
+            <h3 style={{ marginTop: "100px" }}>Previous Appointments -</h3>
             <div className="ap-previous-appointments">
-
+                {appointments.sort((a, b) => a.date - b.date).map(obj => {
+                    if (obj.status === true) {
+                        return (
+                            <PreviousApointment key={obj._id} obj={obj} />
+                        )
+                    } else return (<></>)
+                })}
             </div>
         </div>
     )

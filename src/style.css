@@ -1027,8 +1027,69 @@ a:hover {
     max-width: 900px;
 }
 
+/*PATIENT PREVIOUS APPOINTMENTS*/
+.ap-previous-appointments {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+}
 
+.previous-appointment {
+    border: 2px solid rgb(167, 167, 167);
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+.charged{
+    font-weight: bold;
+    font-size: 14px;
+}
+.pa-notes-tag {
+    margin-top: 10px;
+    color: rgb(61, 61, 61);
+    font-size: 14px;
+}
 
+.pa-notes {
+    background-color: rgb(219, 219, 219);
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.pa-notes p {
+    font-family: 'Cascadia Code', sans-serif;
+}
+
+.pa-name {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.pa-actions {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.pa-text {
+    width: 100%;
+    border-radius: 5px;
+    outline: none;
+    padding: 10px;
+    font-size: 14px;
+    font-family: 'Cascadia Code', sans-serif;
+}
+
+.post-btn{
+    background-color: var(--primary);
+    color: white;
+    border-radius: 5px;
+}
 
 
 

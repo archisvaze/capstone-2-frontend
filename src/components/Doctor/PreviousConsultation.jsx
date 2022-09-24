@@ -1,5 +1,6 @@
 import React from 'react'
 import { Rating } from '@mui/material';
+import StarIcon from '@mui/icons-material/Star';
 import phone from "../../icons/phone.svg";
 import profile from "../../icons/profile.svg";
 
@@ -17,8 +18,8 @@ export default function PreviousConsultation(props) {
             </div>
 
             <div className="pc-rating">
-                <p>{obj.review === null ? "Not rated yet" : obj.rating}</p>
-                <Rating name="rating-read" value={obj.patient.rating} readOnly />
+                <p>{obj.review === null ? "Not rated yet" : obj.review}</p>
+                <Rating name="half-rating-read" defaultValue={obj.rating} precision={0.5} readOnly />
             </div>
 
 
