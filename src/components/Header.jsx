@@ -53,6 +53,10 @@ export default function Header() {
                         }}>Home</a>
 
                         <a onClick={() => {
+                            navigate("/patient-appointments")
+                        }}>Appointments</a>
+
+                        <a onClick={() => {
                             navigate("/patient-edit")
                         }}>Edit Profile</a>
                     </div>

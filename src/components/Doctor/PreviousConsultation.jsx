@@ -9,7 +9,7 @@ export default function PreviousConsultation(props) {
         <div className="previous-consultation">
 
             <div className="pc-contact-info">
-                <img style={{ width: "35px", height: "35px", borderRaduis: "70px", objectFit: "cover" }} src={obj.patient.img === null ? profile : obj.patient.img} alt="" />
+                <img style={{ width: "35px", height: "35px", borderRadius: "70px", objectFit: "cover" }} src={obj.patient.img === null ? profile : obj.patient.img} alt="" />
                 <div className="pc-contact">
                     <p style={{ fontWeight: "bold" }}>{obj.patient.username}</p>
                     <p style={{ color: "grey", fontSize: "14px" }}>{obj.patient.age} yrs, {obj.patient.gender} </p>
@@ -35,7 +35,6 @@ export default function PreviousConsultation(props) {
             <div className="pc-notes">
                 <p>{obj.notes}</p>
             </div>
-
 
         </div>
     )

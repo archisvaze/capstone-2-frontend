@@ -1017,6 +1017,15 @@ a:hover {
     background-color: inherit;
 }
 
+/* PATIENT APPOINTMENTS PAGE*/
+
+.ap-upcoming-appointments {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 900px;
+}
 
 
 
