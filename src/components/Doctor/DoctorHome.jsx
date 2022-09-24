@@ -56,7 +56,7 @@ export default function DoctorHome() {
     dispatch(setAlert([text, true, flag]))
     setTimeout(() => {
       dispatch(setAlert([text, false, flag]))
-    }, 2000)
+    }, 4000)
   }
 
   function setnewDate() {

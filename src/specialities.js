@@ -1,4 +1,5 @@
 const specialities = [
+    "All",
     "Family Physician",
     "Dentist",
     "Pediatrician",

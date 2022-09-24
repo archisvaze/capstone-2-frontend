@@ -1,11 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 @import url("https://cdn.jsdelivr.net/npm/@xz/fonts@1/serve/cascadia-code.min.css");
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400&display=swap');
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
+    /* font-family: 'Roboto', sans-serif; */
+    font-family: 'Ubuntu', sans-serif;
     --primary: #0eca2d;
 }
 
@@ -33,7 +35,7 @@ input[type=number] {
 }
 
 button {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Ubuntu', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -70,7 +72,8 @@ header {
     top: 0;
     left: 0;
     right: 0;
-    box-shadow: 0 5px 10px 2px rgba(0, 0, 0, 0.2);
+    /* box-shadow: 0 5px 10px 2px rgba(0, 0, 0, 0.2); */
+    box-shadow: 0 3px 1px 1px var(--primary);
     background-color: rgba(255, 255, 255, 0.75);
     backdrop-filter: blur(30px);
     -webkit-backdrop-filter: blur(30px);
@@ -94,8 +97,8 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px;
-    border-radius: 10px;
+    padding: 20px;
+    border-radius: 4px;
     text-align: center;
     box-shadow: 4px 10px 15px 4px rgba(0, 0, 0, 0.3);
 }
@@ -266,7 +269,7 @@ a:hover {
 
 /*LOGIN PAGE*/
 
-.login{
+.login {
     padding: 0;
     width: 100vw;
     height: 100vh;
@@ -274,16 +277,19 @@ a:hover {
     flex-direction: row;
     justify-content: space-between;
 }
-.background{
+
+.background {
     height: 100vh;
     width: 50vw;
 }
-.background img{
+
+.background img {
     width: 50vw;
     height: 100vh;
     object-fit: cover;
 }
-.form-container{
+
+.form-container {
     height: 100vh;
     width: 100%;
     display: flex;
@@ -291,12 +297,13 @@ a:hover {
     justify-content: center;
     align-items: center;
 }
-.form-container form{
+
+.form-container form {
     display: flex;
     flex-direction: column;
 }
 
-.form-container input{
+.form-container input {
     border: 1px solid rgb(201, 201, 201);
     background-color: white;
     height: 50px;
@@ -307,7 +314,8 @@ a:hover {
     color: black;
     margin: 10px;
 }
-.form-container button{
+
+.form-container button {
     margin: 10px;
     height: 50px;
     background-color: #0eca2d;
@@ -320,9 +328,10 @@ a:hover {
 
 }
 
-.error-msg{
+.error-msg {
     margin: 0 auto;
 }
+
 /*PATIENT ONBOARDING PAGE */
 .patient-onboarding,
 .doctor-onboarding {
@@ -491,31 +500,83 @@ a:hover {
 }
 
 /*PATIENT HOME PAGE*/
-.patient-home{
-    border: 2px solid red;
+.patient-home {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
+}
+
+.heading {
+    font-size: 30px;
+}
+
+.sub-heading {
+    margin-top: 10px;
+    font-size: 22px;
+    color: rgb(83, 83, 83);
+    margin-bottom: 30px;
+}
+
+.ph-search-container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+    background-color: rgb(201, 201, 201);
+    padding: 15px 5px;
+    border-radius: 5px;
+    margin-bottom: 20px;
 
 }
-.ph-left{
-    flex: 1;
-    border: 2px solid blue;
+
+.search-label {
+    font-size: 14px;
+    margin-bottom: 3px;
 }
-.ph-right{
-    border: 2px solid green;
-    flex: 2;
+
+.ph-search-container input {
+    outline: none;
+    border: 1px solid grey;
+    height: 35px;
+    width: 200px;
+    border-radius: 5px;
+    padding: 0 10px;
+    font-size: 15px;
+}
+
+.ph-specialities-container {
+    position: relative;
+}
+
+.ph-specialities-container button {
+    width: 220px;
+    border-radius: 5px;
+    height: 35px;
+    border: 1px solid grey;
+}
+
+.ph-specialities {
+    position: absolute;
+    z-index: 5;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    height: 200px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-shadow: 2px 2px 7px 3px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+}
+
+.ph-specialities p {
+    cursor: pointer;
+    padding: 10px;
 }
 
 .ph-doctors-container {
     width: 100%;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
 
 }
 
@@ -528,23 +589,30 @@ a:hover {
     border: 1px solid grey;
     border-radius: 5px;
     background-color: white;
+    width: 350px;
+    height: 250px;
+    margin: 10px;
 }
 
 .doctor-card-left {
     gap: 10px;
     display: flex;
     flex-direction: column;
+    width: 50%;
+    align-items: center;
 }
-.doctor-card-right button{
+
+.doctor-card-right button {
     border: 2px solid rgb(201, 201, 201);
     border-radius: 5px;
     transition: 0.2s;
     font-weight: bold;
 }
-.doctor-card-right button:hover{
-   background-color: #0eca2d;
-   color: white;
-   border: 2px solid #0eca2d;
+
+.doctor-card-right button:hover {
+    background-color: #0eca2d;
+    color: white;
+    border: 2px solid #0eca2d;
 }
 
 
@@ -552,30 +620,38 @@ a:hover {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    width: 50%;
 }
 
-.dc-name{
+.dc-name {
     margin: 0 auto;
     font-weight: bold;
     margin-top: 5px;
-    letter-spacing: 1px;
-}
-.dc-speciality{
-    margin: 0 auto;
-    font-size: 14px;
-    color: grey;
-    margin-top: 5px;
+    text-align: center;
 }
 
-.dc-tag{
+.dc-speciality {
+    margin: 0 auto;
+    font-size: 14px;
+    margin-top: 5px;
+    color: white;
+    padding: 5px 10px;
+    letter-spacing: 1px;
+    background-color: #555;
+    border-radius: 5px;
+}
+
+.dc-tag {
     font-size: 13px;
     color: grey;
 }
-.dc-tag-body{
+
+.dc-tag-body {
     font-size: 14px;
     font-weight: bold;
     margin-bottom: 10px;
 }
+
 .conultation-page-container,
 .notes-container {
     top: 0;
@@ -619,7 +695,7 @@ a:hover {
     gap: 20px;
 }
 
-.calendar-container{
+.calendar-container {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;

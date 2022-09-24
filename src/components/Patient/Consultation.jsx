@@ -5,7 +5,9 @@ import Calendar from 'react-calendar';
 import avatar from "../../images/avatar-placeholder.webp"
 
 export default function Consultation(props) {
-    let showPopUp = props.showPopUp
+    let showPopUp = props.showPopUp;
+    let setShowPopUp = props.setShowPopUp;
+    let alert = props.alert;
     const state = useSelector((state) => state.myState);
     const doctor = state.consultation.doctor;
     const patient = state.consultation.patient;
@@ -68,7 +70,13 @@ export default function Consultation(props) {
         fetch(`http://localhost:8000/consultation/`, reqOptions)
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                if (data.error) {
+                    alert(data.error, "error")
+                }
+                if (data.message) {
+                    alert(data.message, "alert");
+                    setShowPopUp(false)
+                }
             })
     }
 
