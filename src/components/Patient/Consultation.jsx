@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
 import { allDays } from '../../times';
 import Calendar from 'react-calendar';
-
+import avatar from "../../images/avatar-placeholder.webp"
 
 export default function Consultation(props) {
+    let showPopUp = props.showPopUp
     const state = useSelector((state) => state.myState);
     const doctor = state.consultation.doctor;
     const patient = state.consultation.patient;
@@ -12,6 +13,14 @@ export default function Consultation(props) {
     const [date, setDate] = useState(new Date());
     const [time, setTime] = useState("");
     const [times, setTimes] = useState([])
+
+
+    useEffect(() => {
+        setDate(new Date())
+        setTime("")
+        setTimes([])
+
+    }, [showPopUp])
 
     function getTimes() {
         if (date.length <= 1) {
@@ -66,19 +75,26 @@ export default function Consultation(props) {
 
     return (
         <div className='consultation-container'>
-            <div className="calendar">
+            <div className="calendar-container">
                 <p className='select-date'>Select a Date</p>
-                <p className='availability'>Availability:  every {doctor?.days.map(day => <span key={day}>{day}</span>)}</p>
+                <p className='availability'> Dr. {doctor?.username} is available every <br />{doctor?.days.map(day => <span key={day}>{day} &nbsp;</span>)}</p>
                 <Calendar
                     onChange={setDate}
                     value={date}
+                    minDate={new Date()}
                 />
             </div>
 
             <div className="consultation-info-container">
                 <div className="consultation-doctor-info">
-                    <img style={{ width: "90px", height: "90px", borderRadius: "100px", objectFit: 'cover' }} src={doctor?.img} alt="" />
+                    <img style={{ width: "90px", height: "90px", borderRadius: "100px", objectFit: 'cover' }} src={doctor?.img === null ? avatar : doctor?.img} alt="" />
                     <h3>Book an appointment with Dr {doctor?.username}</h3>
+                    <p style={{ fontSize: "14px" }}>{doctor?.speciality}</p>
+
+                    <div className="dc-cost">
+                        <p style={{ fontSize: "15px" }}>Cost / Consultation: <span style={{ fontWeight: "bold" }}> $ {doctor?.cost}</span></p>
+
+                    </div>
                 </div>
 
 

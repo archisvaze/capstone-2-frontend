@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
 import { setLogout } from '../slices/mySlice';
 import Logo from "./Logo"
+import avatar from "../images/avatar-placeholder.webp"
 
 export default function Header() {
     const state = useSelector((state) => state.myState);
@@ -20,8 +21,13 @@ export default function Header() {
 
                     {/* Doctor */}
                     <div style={{ display: state.isLoggedIn === false ? "none" : state.user.doctor_id ? "flex" : "none" }} className="user-header">
-                        <img style={{ width: "30px", height: "30px", borderRadius: "15px", objectFit: "cover" }} src={state.user.img} alt="" />
+                        <img style={{ width: "30px", height: "30px", borderRadius: "15px", objectFit: "cover" }} src={state.user.img === null ? avatar : state.user.img} alt="" />
                         <p style={{ fontWeight: "bold" }}>Dr. {state.user.username}</p>
+                    </div>
+                    {/* Patient */}
+                    <div style={{ display: state.isLoggedIn === false ? "none" : state.user.patient_id ? "flex" : "none" }} className="user-header">
+                        <img style={{ width: "30px", height: "30px", borderRadius: "15px", objectFit: "cover" }} src={state.user.img === null ? avatar : state.user.img} alt="" />
+                        <p style={{ fontWeight: "bold" }}>{state.user.username}</p>
                     </div>
 
 
@@ -41,7 +47,7 @@ export default function Header() {
                     </div>
 
 
-                    <button style={{ display: state.isLoggedIn === false ? "none" : "flex" }} onClick={() => {
+                    <button style={{ display: state.isLoggedIn === false ? "none" : "flex", borderRadius: "5px" }} onClick={() => {
                         dispatch(setLogout())
                         navigate("/")
                     }} className="logout-btn">Logout</button>

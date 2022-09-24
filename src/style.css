@@ -491,7 +491,25 @@ a:hover {
 }
 
 /*PATIENT HOME PAGE*/
+.patient-home{
+    border: 2px solid red;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
 
+}
+.ph-left{
+    flex: 1;
+    border: 2px solid blue;
+}
+.ph-right{
+    border: 2px solid green;
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 .ph-doctors-container {
     width: 100%;
@@ -502,11 +520,14 @@ a:hover {
 }
 
 .ph-doctor-card {
-    border: 2px solid black;
-    width: 100%;
-    max-width: 900px;
     display: flex;
-    justify-content: flex-start;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 30px;
+    padding: 10px;
+    border: 1px solid grey;
+    border-radius: 5px;
+    background-color: white;
 }
 
 .doctor-card-left {
@@ -514,6 +535,18 @@ a:hover {
     display: flex;
     flex-direction: column;
 }
+.doctor-card-right button{
+    border: 2px solid rgb(201, 201, 201);
+    border-radius: 5px;
+    transition: 0.2s;
+    font-weight: bold;
+}
+.doctor-card-right button:hover{
+   background-color: #0eca2d;
+   color: white;
+   border: 2px solid #0eca2d;
+}
+
 
 .doctor-card-right {
     display: flex;
@@ -521,6 +554,28 @@ a:hover {
     justify-content: space-between;
 }
 
+.dc-name{
+    margin: 0 auto;
+    font-weight: bold;
+    margin-top: 5px;
+    letter-spacing: 1px;
+}
+.dc-speciality{
+    margin: 0 auto;
+    font-size: 14px;
+    color: grey;
+    margin-top: 5px;
+}
+
+.dc-tag{
+    font-size: 13px;
+    color: grey;
+}
+.dc-tag-body{
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
 .conultation-page-container,
 .notes-container {
     top: 0;
@@ -564,6 +619,12 @@ a:hover {
     gap: 20px;
 }
 
+.calendar-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
 .select-date {
     font-weight: bold;
 
@@ -582,26 +643,25 @@ a:hover {
     flex-direction: column;
     border: 1px solid grey;
     border-radius: 5px;
-    gap: 20px;
-    justify-content: space-between;
+    justify-content: center;
     width: 500px;
+    gap: 20px;
 }
 
-.consultation-container span {
-    margin: 0 3px;
-}
 
 .consultation-times-container {
-    background-color: rgb(221, 221, 221);
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     border-radius: 5px;
+    height: 100px;
+    max-height: 100px;
+    overflow-y: auto;
 }
 
 .consultation-times-container p {
-    margin: 10px;
+    margin: 5px;
     border: 2px solid var(--primary);
     padding: 5px 10px;
     border-radius: 5px;
@@ -617,7 +677,8 @@ a:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 5px;
+
 }
 
 /*DOCTOR HOME PAGE*/
@@ -657,7 +718,7 @@ a:hover {
     margin: 10px;
     background-color: white;
     padding: 25px;
-    border-radius: 10px;
+    border-radius: 5px;
     display: flex;
     flex-direction: column;
     box-shadow: 2px 2px 10px 3px rgba(0, 0, 0, 0.2);
@@ -895,7 +956,7 @@ abbr {
     max-width: 380px;
     background-color: #fff;
     color: #222;
-    border-radius: 10px;
+    border-radius: 5px;
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.125em;
     min-height: 260px;
@@ -903,6 +964,7 @@ abbr {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    box-shadow: 2px 2px 10px 3px rgb(0 0 0 / 20%);
 }
 
 .react-calendar__navigation button {

@@ -4,6 +4,7 @@ import clock from "../../icons/clock.svg";
 import phone from "../../icons/phone.svg";
 import profile from "../../icons/profile.svg";
 
+
 export default function ConsultationCard(props) {
     let obj = props.obj;
     let setNotes = props.setNotes
