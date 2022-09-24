@@ -16,6 +16,8 @@ export default function Consultation(props) {
     const [time, setTime] = useState("");
     const [times, setTimes] = useState([])
 
+    const [formatedDate, setFormatedDate] = useState("")
+
 
     useEffect(() => {
         setDate(new Date())
@@ -38,15 +40,19 @@ export default function Consultation(props) {
         }
     }
 
-    function setnewDate() {
+    function setnewDate(date) {
         console.log(date)
-        const localDate = new Date(date).toISOString();
-        const newDate = localDate.split("T")[0];
+        let day = new Date(date).getDate();
+        let month = new Date(date).getMonth();
+        let year = new Date(date).getFullYear();
+        let newDate = `${year}-${month}-${day}`
         console.log(newDate)
-        return newDate;
+        setFormatedDate(newDate)
     }
 
     useEffect(() => {
+        console.log(date)
+        setnewDate(date)
         getTimes();
     }, [date])
 
@@ -55,7 +61,6 @@ export default function Consultation(props) {
             console.log("all fields muust be filled");
             return;
         }
-        let newDate = setnewDate();
         const reqOptions = {
             method: 'POST',
             headers: {
@@ -64,7 +69,7 @@ export default function Consultation(props) {
             },
             body: JSON.stringify({
                 patient_id: patient.patient_id,
-                doctor_id: doctor.doctor_id, time, date: newDate
+                doctor_id: doctor.doctor_id, time, date: formatedDate
             })
         }
         fetch(`http://localhost:8000/consultation/`, reqOptions)
