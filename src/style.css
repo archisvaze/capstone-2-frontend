@@ -866,6 +866,7 @@ a:hover {
     height: 35px;
     letter-spacing: 1px;
     color: white;
+    border-radius: 5px;
 }
 
 .notes {
