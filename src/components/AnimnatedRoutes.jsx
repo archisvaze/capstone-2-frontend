@@ -10,6 +10,7 @@ import PatientLogin from './Patient/PatientLogin'
 import PatientOnboarding from './Patient/PatientOnboarding'
 import PatientHome from "./Patient/PatientHome"
 import DoctorEdit from './Doctor/DoctorEdit'
+import PatientEdit from './Patient/PatientEdit'
 
 
 import { AnimatePresence } from 'framer-motion'
@@ -30,6 +31,7 @@ export default function AnimnatedRoutes() {
                 {/* routes for patient */}
                 <Route path="/patient-login" element={<PatientLogin />} />
                 <Route path="/patient-onboarding" element={<PatientOnboarding />} />
+                <Route path="/patient-edit" element={<PatientEdit />} />
                 <Route path="/patient-home" element={<PatientHome />} />
             </Routes>
         </AnimatePresence>

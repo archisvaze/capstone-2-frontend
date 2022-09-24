@@ -116,8 +116,12 @@ export default function Consultation(props) {
                         )
                     }) : <p style={{ border: "none" }}>No Consultations on this day</p>}
                 </div>
-
-                <button style={{ backgroundColor: time === "" ? "" : "#0eca2d", color: time === "" ? "black" : "white" }} onClick={() => bookConsultation()}>Book</button>
+                <div style={{ display: "flex", width: "100%", justifyContent: "space-between" }}>
+                    <button onClick={() => {
+                        setShowPopUp(false)
+                    }} className="cancel-btn">Cancel</button>
+                    <button style={{ backgroundColor: time === "" ? "" : "#0eca2d", color: time === "" ? "black" : "white" }} onClick={() => bookConsultation()}>Book</button>
+                </div>
             </div>
 
         </div>

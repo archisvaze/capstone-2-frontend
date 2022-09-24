@@ -46,6 +46,17 @@ export default function Header() {
                         }}>Edit Profile</a>
                     </div>
 
+                    {/* Patient */}
+                    <div style={{ display: state.isLoggedIn === false ? "none" : state.user.patient_id ? "flex" : "none" }} className="user-header-actions">
+                        <a onClick={() => {
+                            navigate("/patient-home")
+                        }}>Home</a>
+
+                        <a onClick={() => {
+                            navigate("/patient-edit")
+                        }}>Edit Profile</a>
+                    </div>
+
 
                     <button style={{ display: state.isLoggedIn === false ? "none" : "flex", borderRadius: "5px" }} onClick={() => {
                         dispatch(setLogout())

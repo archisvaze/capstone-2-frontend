@@ -724,6 +724,17 @@ a:hover {
     gap: 20px;
 }
 
+.consultation-info-container button {
+    width: 45%;
+    border-radius: 5px;
+    transition: 0.2s;
+}
+
+.cancel-btn:hover {
+    color: white;
+    background-color: crimson;
+}
+
 
 .consultation-times-container {
     display: flex;
@@ -1036,7 +1047,7 @@ abbr {
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.125em;
     min-height: 260px;
-    max-height: 260px;
+    max-height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -1113,4 +1124,30 @@ abbr[title] {
 .calendar button {
     border-radius: 0;
     padding: 10px;
+}
+
+
+
+
+@media screen and (min-width: 0px) and (max-width: 930px) {
+    .consultation-container {
+        padding-top: 120px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    header {
+        height: 90px;
+    }
+
+    .page {
+        padding-top: 120px;
+    }
 }
