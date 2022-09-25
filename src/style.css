@@ -287,7 +287,9 @@ a:hover {
 }
 
 .error-msg {
-    margin: 0 auto;
+    font-size: 13px;
+    margin-left: 10px;
+    margin-top: -5px;
 }
 
 /*PATIENT ONBOARDING PAGE */

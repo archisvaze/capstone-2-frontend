@@ -125,6 +125,8 @@ export default function Landing() {
                 component="div"
                 className='error-msg' />
 
+              <p style={{ textAlign: "right", marginRight: "10px", color: "green", cursor: "pointer" }}>Forgot Password?</p>
+
               <button
                 id="submit-btn"
                 type='submit'
@@ -133,7 +135,7 @@ export default function Landing() {
                 Login
               </button>
 
-              <p>Don't have an account? <span onClick={() => {
+              <p style={{ textAlign: "center" }}>Don't have an account? <span onClick={() => {
                 if (user === "" || user === undefined) {
                   alert("Please choose your account", "error")
                 }
