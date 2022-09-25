@@ -38,22 +38,30 @@ export default function Header() {
                     {/* Doctor */}
                     <div style={{ display: state.isLoggedIn === false ? "none" : state.user.doctor_id ? "flex" : "none" }} className="user-header-actions">
                         <a onClick={() => {
-                            navigate("/doctor-home")
+                            if (state.user.onboarded === true) {
+                                navigate("/doctor-home")
+                            }
                         }}>Consultations</a>
 
                         <a onClick={() => {
-                            navigate("/doctor-edit")
+                            if (state.user.onboarded === true) {
+                                navigate("/doctor-edit")
+                            }
                         }}>Edit Profile</a>
                     </div>
 
                     {/* Patient */}
                     <div style={{ display: state.isLoggedIn === false ? "none" : state.user.patient_id ? "flex" : "none" }} className="user-header-actions">
                         <a onClick={() => {
-                            navigate("/patient-home")
+                            if (state.user.onboarded === true) {
+                                navigate("/patient-home")
+                            }
                         }}>Home</a>
 
                         <a onClick={() => {
-                            navigate("/patient-appointments")
+                            if (state.user.onboarded === true) {
+                                navigate("/patient-appointments")
+                            }
                         }}>Appointments</a>
 
                         <a onClick={() => {

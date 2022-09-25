@@ -1,34 +1,38 @@
 import React from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useNavigate } from 'react-router-dom';
-import { setLogin } from '../../slices/mySlice';
+import { setAlert } from '../../slices/mySlice';
 import { useDispatch } from 'react-redux'
 import patient from "../../backgrounds/patient.jpg"
 
-export default function PatientLogin() {
+export default function PatientSignup() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const login = (values) => {
+    function alert(text, flag) {
+        dispatch(setAlert([text, true, flag]))
+        setTimeout(() => {
+            dispatch(setAlert([text, false, flag]))
+        }, 4000)
+    }
+
+    const signup = (values) => {
         const reqOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(values)
         }
 
-        fetch(`http://localhost:8000/auth/patient/login`, reqOptions)
+        fetch(`http://localhost:8000/auth/patient/signup`, reqOptions)
             .then(res => res.json())
             .then(data => {
                 console.log(data)
-                if (data.error) { return; }
+                if (data.error) {
+                    alert(data.alert, "error")
+                }
                 else {
-                    if (data.user.onboarded === true) {
-                        dispatch(setLogin(data))
-                        navigate("/patient-home")
-                    } else {
-                        dispatch(setLogin(data))
-                        navigate("/patient-onboarding")
-                    }
+                    alert("Signed Up! Please Login now", "alert")
+                    navigate("/")
                 }
             })
     }
@@ -36,9 +40,12 @@ export default function PatientLogin() {
         <div className='login fullpage'>
             <div className="form-container">
                 <Formik
-                    initialValues={{ email: "", password: "" }}
+                    initialValues={{ email: "", password: "", username: "" }}
                     validate={(values) => {
                         const errors = {};
+                        if (!values.username) {
+                            errors.username = "Required";
+                        }
                         if (!values.email) {
                             errors.email = "Required";
                         }
@@ -55,8 +62,9 @@ export default function PatientLogin() {
 
                     onSubmit={(values, { setSubmitting }) => {
                         setSubmitting(false);
-                        login(values);
+                        signup(values);
 
+                        values.username = "";
                         values.email = "";
                         values.password = "";
                     }}
@@ -64,6 +72,14 @@ export default function PatientLogin() {
                     {({ isSubmitting }) => (
                         <Form>
 
+                            <Field
+                                placeholder="Enter your full name"
+                                name="username" />
+                            <ErrorMessage
+                                style={{ color: "crimson" }}
+                                name="username"
+                                component="div"
+                                className='error-msg' />
                             <Field
                                 placeholder="Enter email"
                                 name="email" />
@@ -89,13 +105,8 @@ export default function PatientLogin() {
                                 type='submit'
                                 disabled={isSubmitting}
                             >
-                                Login
+                                Signup
                             </button>
-
-                            <p>Don't have an account? <span onClick={() => {
-                                navigate("/patient-signup")
-                            }} style={{ cursor: "pointer", textDecoration: "underline" }}>Signup</span> instead</p>
-
                         </Form>
                     )}
                 </Formik>

@@ -2,11 +2,11 @@ import React from 'react'
 import { Route, Routes, useLocation } from 'react-router-dom'
 import Landing from './Landing'
 
-import DoctorLogin from './Doctor/DoctorLogin'
+import DoctorSignup from './Doctor/DoctorSignup'
 import DoctorOnboarding from './Doctor/DoctorOnboarding'
 import DoctorHome from './Doctor/DoctorHome'
 
-import PatientLogin from './Patient/PatientLogin'
+import PatientSignup from './Patient/PatientSignup'
 import PatientOnboarding from './Patient/PatientOnboarding'
 import PatientHome from "./Patient/PatientHome"
 import DoctorEdit from './Doctor/DoctorEdit'
@@ -24,13 +24,13 @@ export default function AnimnatedRoutes() {
                 <Route path="/" element={<Landing />} />
 
                 {/* routes for doctor */}
-                <Route path="/doctor-login" element={<DoctorLogin />} />
+                <Route path="/doctor-signup" element={<DoctorSignup />} />
                 <Route path="/doctor-onboarding" element={<DoctorOnboarding />} />
                 <Route path="/doctor-edit" element={<DoctorEdit />} />
                 <Route path="/doctor-home" element={<DoctorHome />} />
 
                 {/* routes for patient */}
-                <Route path="/patient-login" element={<PatientLogin />} />
+                <Route path="/patient-signup" element={<PatientSignup />} />
                 <Route path="/patient-onboarding" element={<PatientOnboarding />} />
                 <Route path="/patient-edit" element={<PatientEdit />} />
                 <Route path="/patient-home" element={<PatientHome />} />

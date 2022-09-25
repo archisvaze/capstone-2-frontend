@@ -11,6 +11,14 @@
     --primary: #0eca2d;
 }
 
+.user-doctor {
+    --primary: #388e3c;
+}
+
+.user-patient {
+    --primary: #3175db;
+}
+
 body {
     min-height: 100vh;
     width: 100vw;
@@ -195,77 +203,28 @@ a:hover {
     width: 100vw;
     height: 100vh;
     overflow: hidden;
-    flex-direction: row;
-    justify-content: center;
-}
-
-.section-actions {
-    border-radius: 10px;
-    padding: 30px;
-    display: flex;
-    display: none;
-    gap: 30px;
-    background-color: rgba(255, 255, 255, 0.4);
-    backdrop-filter: blur(30px);
-    -webkit-backdrop-filter: blur(30px);
-}
-
-.login-btn,
-.signup-btn {
-    border-radius: 5px;
-    color: white;
-    text-shadow: 0 0 3px black;
-    font-weight: bold;
-    letter-spacing: 1px;
-}
-
-.login-btn {
-    background-color: #0eca2d;
-}
-
-.signup-btn {
-    background-color: orangered;
-}
-
-.landing section {
-    position: relative;
-    margin: 30px 0;
-    height: 100vh;
-    width: 50vw;
-    display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    transition: transform 0.5s;
-    overflow: hidden;
 }
 
-.landing section h1 {
-    font-size: 30px;
-    color: white;
-    text-shadow: 0 0 5px black;
-    margin: 30px;
-}
-
-.landing section:hover {
-    transform: scale(1.2);
-}
-
-.landing section:hover .section-actions {
+.account-container {
+    width: 100%;
     display: flex;
+    justify-content: center;
 }
 
-.doctor-section {
-    background-image: url("./backgrounds/doctor.jpg");
+.acc-img {
+    width: 200px;
+    border: 2px solid rgb(201, 201, 201);
+    border-radius: 5px;
+    margin: 30px 10px;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-.patient-section {
-    background-image: url("./backgrounds/patient.jpg");
+.acc-img:hover {
+    transform: scale(1.1);
 }
-
 
 /*LOGIN PAGE*/
 
@@ -290,7 +249,6 @@ a:hover {
 }
 
 .form-container {
-    height: 100vh;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -1043,10 +1001,12 @@ a:hover {
     padding: 10px;
     border-radius: 5px;
 }
-.charged{
+
+.charged {
     font-weight: bold;
     font-size: 14px;
 }
+
 .pa-notes-tag {
     margin-top: 10px;
     color: rgb(61, 61, 61);
@@ -1086,7 +1046,7 @@ a:hover {
     font-family: 'Cascadia Code', sans-serif;
 }
 
-.post-btn{
+.post-btn {
     background-color: var(--primary);
     color: white;
     border-radius: 5px;

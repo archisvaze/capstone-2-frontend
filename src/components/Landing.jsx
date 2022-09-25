@@ -1,39 +1,152 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { setLogout } from '../slices/mySlice';
+import { setLogout, setLogin, setAlert } from '../slices/mySlice';
 import { motion } from 'framer-motion'
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import doctor from "../images/doctor.svg";
+import patient from "../images/patient.svg";
+import doctor_unselected from "../images/doctor_unselected.svg";
+import patient_unselected from "../images/patient_unselected.svg";
 
 export default function Landing() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const state = useSelector((state) => state.myState);
 
+  function alert(text, flag) {
+    dispatch(setAlert([text, true, flag]))
+    setTimeout(() => {
+      dispatch(setAlert([text, false, flag]))
+    }, 4000)
+  }
+
+  const [user, setUser] = useState("")
+
   useEffect(() => {
     dispatch(setLogout())
   }, [])
 
+  const login = (values, user) => {
+
+    if (user === "" || user === undefined) {
+      alert("Please choose your account", "error")
+      return;
+    }
+    const reqOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(values)
+    }
+
+    console.log(`http://localhost:8000/auth/${user}/login`)
+
+    fetch(`http://localhost:8000/auth/${user}/login`, reqOptions)
+      .then(res => res.json())
+      .then(data => {
+        console.log(data)
+        if (data.error) { return; }
+        else {
+          if (data.user.onboarded === true) {
+            dispatch(setLogin(data))
+            navigate(`/${user}-home`)
+          } else {
+            dispatch(setLogin(data))
+            navigate(`/${user}-onboarding`)
+          }
+        }
+      })
+  }
+
   return (
     <motion.div
-      initial={{ width: 0 }}
-      animate={{ width: "100vw" }}
-      exit={{ width: 0 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
       className='landing fullpage'>
-      <section className='doctor-section'>
-        <h1>I am a doctor</h1>
-        <div className="section-actions">
-          <button className='login-btn' onClick={() => { navigate("/doctor-login") }}>Login</button>
-          <button className='signup-btn'>Signup</button>
-        </div>
+      <h1>{user === "" ? "Choose your Account" : `I am a ${user}`}</h1>
 
-      </section>
-      <section className='patient-section'>
-        <h1>I am looking for a doctor</h1>
-        <div className="section-actions">
-          <button className='login-btn' onClick={() => { navigate('/patient-login') }}>Login</button>
-          <button className='signup-btn'>Signup</button>
-        </div>
-      </section>
+      <div className="account-container">
+        <img onClick={() => {
+          setUser("doctor")
+        }} className='acc-img' src={user === "doctor" ? doctor : doctor_unselected} alt="" />
+        <img onClick={() => {
+          setUser("patient")
+        }} className='acc-img' src={user === "patient" ? patient : patient_unselected} alt="" />
+      </div>
+
+      <div className="form-container">
+        <Formik
+          initialValues={{ email: "", password: "" }}
+          validate={(values) => {
+            const errors = {};
+            if (!values.email) {
+              errors.email = "Required";
+            }
+            else if (
+              !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
+            ) {
+              errors.email = "Invalid Email Address"
+            }
+            if (!values.password) {
+              errors.password = "Required"
+            }
+            return errors;
+          }}
+
+          onSubmit={(values, { setSubmitting }) => {
+            setSubmitting(false);
+            login(values, user);
+
+            values.email = "";
+            values.password = "";
+          }}
+        >
+          {({ isSubmitting }) => (
+            <Form>
+
+              <Field
+                placeholder="Enter email"
+                name="email" />
+              <ErrorMessage
+                style={{ color: "crimson" }}
+                name="email"
+                component="div"
+                className='error-msg' />
+
+
+              <Field
+                placeholder="Enter password"
+                name="password"
+                type="password" />
+              <ErrorMessage
+                style={{ color: "crimson" }}
+                name="password"
+                component="div"
+                className='error-msg' />
+
+              <button
+                id="submit-btn"
+                type='submit'
+                disabled={isSubmitting}
+              >
+                Login
+              </button>
+
+              <p>Don't have an account? <span onClick={() => {
+                if (user === "" || user === undefined) {
+                  alert("Please choose your account", "error")
+                }
+                else {
+                  navigate(`/${user}-signup`)
+                }
+              }} style={{ cursor: "pointer", textDecoration: "underline" }}>Signup</span> instead</p>
+
+            </Form>
+          )}
+        </Formik>
+      </div>
+
     </motion.div>
   )
 }
