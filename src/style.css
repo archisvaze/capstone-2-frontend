@@ -1182,4 +1182,19 @@ abbr[title] {
     .page {
         padding-top: 120px;
     }
+
+    .dh-top {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .upcoming-consultations-container {
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+
+    }
+    .previous-consultation{
+        flex-wrap: wrap;
+    }
 }

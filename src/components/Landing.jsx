@@ -125,7 +125,14 @@ export default function Landing() {
                 component="div"
                 className='error-msg' />
 
-              <p style={{ textAlign: "right", marginRight: "10px", color: "green", cursor: "pointer" }}>Forgot Password?</p>
+              <p onClick={() => {
+                if (user === "" || user === undefined) {
+                  alert("Please choose your account", "error")
+                }
+                else {
+                  window.open(`http://localhost:8000/auth/${user}/forgot-password`)
+                }
+              }} style={{ textAlign: "right", marginRight: "10px", color: "green", cursor: "pointer" }}>Forgot Password?</p>
 
               <button
                 id="submit-btn"
