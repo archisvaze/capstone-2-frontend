@@ -120,7 +120,7 @@ export default function DoctorHome() {
 
 
   return (
-    <div className='doctor-home page'>
+    <div className='doctor-home page user-doctor'>
       <div className="dh-top">
         <Calendar
           onChange={setDate}
@@ -154,7 +154,7 @@ export default function DoctorHome() {
           <button onClick={() => {
             updateConsultation();
             setShowNotes(false)
-          }} style={{ backgroundColor: "#22c55e" }}>Mark Done</button>
+          }} style={{ backgroundColor: "#388e3c", borderRadius: "5px" }}>Mark Done</button>
 
         </div>
         <div onClick={() => {

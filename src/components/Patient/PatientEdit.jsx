@@ -67,7 +67,7 @@ export default function PatientEdit() {
 
     }
     return (
-        <div className='patient-onboarding fullpage'>
+        <div className='patient-onboarding fullpage user-patient'>
 
             <h1>Edit You Profile</h1>
             <p>This will help us serve your better.</p>
@@ -100,7 +100,7 @@ export default function PatientEdit() {
                     <div style={{ display: showMenu === true ? "flex" : "none" }} className="specialities" onMouseLeave={() => { setShowMenu(false) }}>
                         {specialities.map(l => {
                             return (
-                                <p style={{ background: lookingfor === l ? "#0eca2d" : "white", color: lookingfor === l ? "white" : "black" }} onClick={() => {
+                                <p style={{ background: lookingfor === l ? "#3175db" : "white", color: lookingfor === l ? "white" : "black" }} onClick={() => {
                                     setLookingfor(l);
                                     setShowMenu(false)
                                 }} key={l}>{l}</p>

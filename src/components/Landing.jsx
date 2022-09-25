@@ -63,7 +63,7 @@ export default function Landing() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className='landing fullpage'>
+      className='landing fullpage user-doctor'>
       <h1>{user === "" ? "Choose your Account" : `I am a ${user}`}</h1>
 
       <div className="account-container">

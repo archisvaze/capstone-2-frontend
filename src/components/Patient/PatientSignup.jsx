@@ -37,7 +37,7 @@ export default function PatientSignup() {
             })
     }
     return (
-        <div className='login fullpage'>
+        <div className='login fullpage user-patient'>
             <div className="form-container">
                 <Formik
                     initialValues={{ email: "", password: "", username: "" }}

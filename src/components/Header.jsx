@@ -10,9 +10,9 @@ export default function Header() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     return (
-        <header>
+        <header className={state.user.patient_id === undefined ? 'user-doctor' : 'user-patient'}>
 
-            <div style={{ top: state.alert[1] === true ? "90px" : "-20vh", backgroundColor: state.alert[2] === "error" ? "crimson" : "#0eca2d" }} className="alert">{state.alert[0]}</div>
+            <div style={{ top: state.alert[1] === true ? "90px" : "-20vh", backgroundColor: state.alert[2] === "error" ? "crimson" : state.user.patient_id === undefined ? "#388e3c" : "#3175db" }} className="alert">{state.alert[0]}</div>
 
             <nav>
                 <div className="logo-container">

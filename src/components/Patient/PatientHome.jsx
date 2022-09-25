@@ -93,7 +93,7 @@ export default function PatientHome() {
   }
 
   return (
-    <div className="patient-home page">
+    <div className="patient-home page user-patient">
 
       <p className='heading'>Search Doctor, Make an Appointment</p>
       <p className='sub-heading'>Discover the best doctor in your city that meets your needs</p>
@@ -134,7 +134,7 @@ export default function PatientHome() {
           <div style={{ display: showMenu === true ? "flex" : "none" }} className="ph-specialities" onMouseLeave={() => { setShowMenu(false) }}>
             {specialities.map(l => {
               return (
-                <p style={{ background: speciality === l ? "#0eca2d" : "white", color: speciality === l ? "white" : "black" }} onClick={() => {
+                <p style={{ background: speciality === l ? "#3175db" : "white", color: speciality === l ? "white" : "black" }} onClick={() => {
                   setSpeciality(l);
                   setShowMenu(false)
                 }} key={l}>{l}</p>

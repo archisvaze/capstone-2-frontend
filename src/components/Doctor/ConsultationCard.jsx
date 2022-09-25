@@ -13,7 +13,7 @@ export default function ConsultationCard(props) {
     let setShowNotes = props.setShowNotes;
     let cancelConsultation = props.cancelConsultation;
     return (
-        <div key={obj._id} className="dh-consultation">
+        <div key={obj._id} className="dh-consultation user-doctor">
 
             <div className="dh-contact-info">
                 <p><img src={profile} alt="" />{obj.patient.username}</p>
@@ -41,7 +41,7 @@ export default function ConsultationCard(props) {
                     setPatient(obj.patient)
                     setConsultationID(obj._id)
                     setShowNotes(true)
-                }} style={{ backgroundColor: "#22c55e" }}>Mark Done</button>
+                }} style={{ backgroundColor: "#388e3c" }}>Mark Done</button>
             </div>
         </div>
     )

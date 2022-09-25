@@ -105,7 +105,7 @@ export default function DoctorEdit() {
 
 
   return (
-    <div className='doctor-onboarding fullpage'>
+    <div className='doctor-onboarding fullpage user-doctor'>
       <h2>Edit Your Profile Settings</h2>
       <div className="onboarding-container">
 
@@ -140,7 +140,7 @@ export default function DoctorEdit() {
           <div style={{ display: showMenu === true ? "flex" : "none" }} className="specialities" onMouseLeave={() => { setShowMenu(false) }}>
             {specialities.map(l => {
               return (
-                <p style={{ background: speciality === l ? "#0eca2d" : "white", color: speciality === l ? "white" : "black" }} onClick={() => {
+                <p style={{ background: speciality === l ? "#388e3c" : "white", color: speciality === l ? "white" : "black" }} onClick={() => {
                   setSpeciality(l);
                   setShowMenu(false)
                 }} key={l}>{l}</p>
@@ -160,7 +160,7 @@ export default function DoctorEdit() {
                 return (
                   <p onClick={() => {
                     addDays(d);
-                  }} style={{ background: days.includes(d) ? "#0eca2d" : "white", color: days.includes(d) ? "white" : "black" }} key={d}>{d}</p>
+                  }} style={{ background: days.includes(d) ? "#388e3c" : "white", color: days.includes(d) ? "white" : "black" }} key={d}>{d}</p>
                 )
               })}
             </div>
@@ -175,7 +175,7 @@ export default function DoctorEdit() {
                 return (
                   <p onClick={() => {
                     addTimes(t);
-                  }} style={{ background: times.includes(t) ? "#0eca2d" : "white", color: times.includes(t) ? "white" : "black" }} key={t}>{t}</p>
+                  }} style={{ background: times.includes(t) ? "#388e3c" : "white", color: times.includes(t) ? "white" : "black" }} key={t}>{t}</p>
                 )
               })}
             </div>

@@ -87,7 +87,7 @@ export default function Consultation(props) {
 
 
     return (
-        <div className='consultation-container'>
+        <div className='consultation-container user-patient'>
             <div className="calendar-container">
                 <p className='select-date'>Select a Date</p>
                 <p className='availability'> Dr. {doctor?.username} is available every <br />{doctor?.days.map(day => <span key={day}>{day} &nbsp;</span>)}</p>
@@ -115,7 +115,7 @@ export default function Consultation(props) {
 
                     {doctor?.days.includes(allDays[new Date(date).getDay()]) ? times.map(t => {
                         return (
-                            <p style={{ backgroundColor: time === t ? "#0eca2d" : "white", color: time === t ? "white" : "black" }} onClick={() => {
+                            <p style={{ backgroundColor: time === t ? "#3175db" : "white", color: time === t ? "white" : "black" }} onClick={() => {
                                 setTime(t)
                             }} key={t}>{t}</p>
                         )
@@ -125,7 +125,7 @@ export default function Consultation(props) {
                     <button onClick={() => {
                         setShowPopUp(false)
                     }} className="cancel-btn">Cancel</button>
-                    <button style={{ backgroundColor: time === "" ? "" : "#0eca2d", color: time === "" ? "black" : "white" }} onClick={() => bookConsultation()}>Book</button>
+                    <button style={{ backgroundColor: time === "" ? "" : "#3175db", color: time === "" ? "black" : "white" }} onClick={() => bookConsultation()}>Book</button>
                 </div>
             </div>
 

@@ -88,7 +88,7 @@ export default function PatientOnboarding() {
           <textarea onChange={(e) => setConditions(e.target.value)} style={{ resize: "none" }} rows="4" type="text" value={conditions} />
         </div>
 
-        <div className="specialities-container">
+        <div className="specialities-container user-patient">
 
           <p>{lookingfor === "" ? "What kind of a doctor are you looking for?" : "I am looking for a " + lookingfor}</p>
 
@@ -100,7 +100,7 @@ export default function PatientOnboarding() {
           <div style={{ display: showMenu === true ? "flex" : "none" }} className="specialities" onMouseLeave={() => { setShowMenu(false) }}>
             {specialities.map(l => {
               return (
-                <p style={{ background: lookingfor === l ? "#0eca2d" : "white", color: lookingfor === l ? "white" : "black" }} onClick={() => {
+                <p style={{ background: lookingfor === l ? "#3175db" : "white", color: lookingfor === l ? "white" : "black" }} onClick={() => {
                   setLookingfor(l);
                   setShowMenu(false)
                 }} key={l}>{l}</p>

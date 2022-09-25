@@ -6,7 +6,7 @@ import profile from "../../icons/profile.svg";
 export default function AppointmentCard(props) {
     let obj = props.obj
     return (
-        <div className="previous-consultation">
+        <div className={"previous-consultation user-patient"}>
 
             <div className="pc-contact-info">
                 <img style={{ width: "35px", height: "35px", borderRadius: "70px", objectFit: "cover" }} src={obj.doctor.img === null ? profile : obj.doctor.img} alt="" />

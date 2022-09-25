@@ -33,7 +33,7 @@ export default function Appointments() {
             })
     }
     return (
-        <div className='appointments-page page'>
+        <div className='appointments-page page user-patient'>
             <h3>Your Upcoming Appointments -</h3>
             <div className="preivous-consultations-container">
                 <div className="previous-consultation titles">
