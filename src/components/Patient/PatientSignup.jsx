@@ -28,7 +28,7 @@ export default function PatientSignup() {
             .then(data => {
                 console.log(data)
                 if (data.error) {
-                    alert(data.alert, "error")
+                    alert(data.alert.message, "error")
                 }
                 else {
                     alert("Signed Up! Please Login now", "alert")
