@@ -45,7 +45,9 @@ export default function Landing() {
       .then(res => res.json())
       .then(data => {
         console.log(data)
-        if (data.error) { return; }
+        if (data.error) {
+          alert(data.error, "error")
+        }
         else {
           if (data.user.onboarded === true) {
             dispatch(setLogin(data))
