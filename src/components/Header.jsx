@@ -65,7 +65,9 @@ export default function Header() {
                         }}>Appointments</a>
 
                         <a onClick={() => {
-                            navigate("/patient-edit")
+                            if (state.user.onboarded === true) {
+                                navigate("/patient-edit")
+                            }
                         }}>Edit Profile</a>
                     </div>
 
