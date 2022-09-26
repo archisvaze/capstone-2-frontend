@@ -121,7 +121,7 @@ export default function PatientEdit() {
                     <input onChange={(e) => setGender(e.target.value)} type="text" placeholder='Gender' value={gender} />
                 </div>
 
-                <button onClick={() => { onboard() }} className="save-btn">Save</button>
+                <button style={{ backgroundColor: "#3175db" }} onClick={() => { onboard() }} className="save-btn">Save</button>
             </div>
         </motion.div>
     )

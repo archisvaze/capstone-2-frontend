@@ -188,7 +188,7 @@ export default function DoctorOnboarding() {
           <input type="text" onChange={(e) => setQualification(e.target.value)} placeholder="Qualifications" value={qualification} />
         </div>
 
-        <button onClick={() => { onboard() }} className="save-btn">Save</button>
+        <button style={{ backgroundColor: "#388e3c" }} onClick={() => { onboard() }} className="save-btn">Save</button>
 
       </div>
     </div>
