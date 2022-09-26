@@ -296,7 +296,7 @@ a:hover {
 .patient-onboarding,
 .doctor-onboarding {
     min-height: 100vh;
-    background-image: url("./backgrounds/onboarding.jpg");
+    /* background-image: url("./backgrounds/onboarding.jpg"); */
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
@@ -919,10 +919,10 @@ a:hover {
 }
 
 .earned {
-    padding: 5px 10px;
-    background-color: grey;
+    padding: 10px 20px;
+    background-color: var(--primary);
     color: white;
-    border-radius: 5px;
+    border-radius: 3px;
 }
 
 .preivous-consultations-container {
