@@ -1,6 +1,67 @@
-# Getting Started with Create React App
+# DocSeek Web App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Link: https://doc-seek.netlify.app/
+
+Tech Stack:
+- React
+- NodeJS
+- Express
+- PostgreSQL
+
+## Requirements
+### Profile Creation
+#### Doctor
+
+The normal signup can be with email, name, and password, and after this we should ask the doctors to fill additional information as mentioned here:
+- Qualification
+- Experience
+- Hospital
+- Location
+- Days and Time slots available 
+- Speciality (can select multiple)
+
+Landing Page
+![Screenshot 2022-09-26 121258](https://user-images.githubusercontent.com/92965519/192212319-f3ad6fe5-7eac-4548-a9f6-874091761b77.png)
+
+Onboarding Page
+![Screenshot 2022-09-26 121855](https://user-images.githubusercontent.com/92965519/192212377-0b99c3b5-00bf-471c-a07e-e8a7594e14eb.png)
+
+#### Patient
+Patients should be able to sign up with their name, email, contact and password. They should have an option to login as well.
+When patient creates an account we want to collect additional information about them like what diseases or discomforts they are suffering from, their blood group, weight, sex, age etc.
+
+We also need to implement the password reset feature, where user can enter their email and they will receive the password reset link on the email
+
+### Doctor Frontend
+- Doctor will have dashboard like view, where they can see a calendar with upcoming bookings and today's bookings
+- Doctor can also see their total consultations and earnings made in the given time frame
+- Once the meeting's start time is near, the doctor can click on meeting and add their notes and prescription and mark meeting as done.
+
+After meeting is marked as done from Doctor's side, the patient can then give rating to the doctor and a review, which will appear on Doctor's profile.
+
+Doctors Home Page
+![Screenshot 2022-09-26 121651](https://user-images.githubusercontent.com/92965519/192212485-53f27c92-47d4-4e3d-b9e3-d6c457ea319f.png)
+
+Information required for patients:
+- Name
+- Past Diseases 
+  - Disease name, and for how long they have had it  
+- Location
+- Looking for
+
+### Patient Frontend
+- Can see the list of all doctors with their ratings, qualifications and cost.
+- On selecting a doctor, will get pop-up with available time slots based on date chosen and can book the doctor
+- Once booking is made, it will appear in their profile page under `Upcoming Consultations` 
+- In their profile they can also see `Past consultations`
+
+Patients Home Page
+![Screenshot 2022-09-26 121134](https://user-images.githubusercontent.com/92965519/192212524-0bfdd279-5392-4bc1-b80d-ff8aff372012.png)
+
+Booking a consultation
+![Screenshot 2022-09-26 121207](https://user-images.githubusercontent.com/92965519/192212566-fe5d30e1-3073-40c7-adf9-394016cc46e2.png)
+
+
 
 ## Available Scripts
 
