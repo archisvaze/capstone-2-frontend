@@ -56,7 +56,8 @@ Information required for patients:
 - In their profile they can also see `Past consultations`
 
 Patients Home Page
-![Screenshot 2022-09-26 121134](https://user-images.githubusercontent.com/92965519/192212524-0bfdd279-5392-4bc1-b80d-ff8aff372012.png)
+![Screenshot 2022-09-26 153246](https://user-images.githubusercontent.com/92965519/192249816-87b63040-e010-473e-8be0-fd924fc300c1.png)
+
 
 Booking a consultation
 ![Screenshot 2022-09-26 121207](https://user-images.githubusercontent.com/92965519/192212566-fe5d30e1-3073-40c7-adf9-394016cc46e2.png)
