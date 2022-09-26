@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { specialities } from "../../specialities"
 import { allDays, allTimes } from "../../times"
 import { setLogout, setOnboard } from '../../slices/mySlice';
+import { motion } from 'framer-motion';
 
 export default function DoctorEdit() {
   console.log("hello")
@@ -105,7 +106,11 @@ export default function DoctorEdit() {
 
 
   return (
-    <div className='doctor-onboarding fullpage user-doctor'>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      className='doctor-onboarding fullpage user-doctor'>
       <h2>Edit Your Profile Settings</h2>
       <div className="onboarding-container">
 
@@ -192,6 +197,6 @@ export default function DoctorEdit() {
         <button onClick={() => { onboard() }} className="save-btn">Save</button>
 
       </div>
-    </div>
+    </motion.div>
   )
 }

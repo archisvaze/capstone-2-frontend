@@ -7,6 +7,7 @@ import ConsultationCard from './ConsultationCard';
 import PreviousConsultation from './PreviousConsultation';
 import { allDays } from '../../times';
 import Calendar from 'react-calendar';
+import { motion } from 'framer-motion';
 
 export default function DoctorHome() {
   const dispatch = useDispatch();
@@ -120,7 +121,11 @@ export default function DoctorHome() {
 
 
   return (
-    <div className='doctor-home page user-doctor'>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      className='doctor-home page user-doctor'>
       <div className="dh-top">
         <Calendar
           onChange={setDate}
@@ -191,6 +196,6 @@ export default function DoctorHome() {
         </div>
       </div>
 
-    </div>
+    </motion.div>
   )
 }

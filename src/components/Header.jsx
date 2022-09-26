@@ -17,7 +17,7 @@ export default function Header() {
             <nav>
                 <div className="logo-container">
                     <Logo />
-                    <p className="logo-text">DOC-Seek</p>
+                    <p className="logo-text">DOCSeek</p>
 
                     {/* Doctor */}
                     <div style={{ display: state.isLoggedIn === false ? "none" : state.user.doctor_id ? "flex" : "none" }} className="user-header">
