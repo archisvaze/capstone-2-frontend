@@ -927,7 +927,7 @@ a:hover {
 .preivous-consultations-container {
     margin-top: 20px;
     width: 100%;
-    background-color: rgb(226, 226, 226);
+    background-color: var(--grey);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1032,15 +1032,32 @@ a:hover {
 }
 
 .previous-appointment {
-    border: 2px solid rgb(167, 167, 167);
     background-color: white;
-    padding: 10px;
+    padding: 20px;
     border-radius: 5px;
+    box-shadow: 2px 3px 7px 2px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+    padding-top: 60px;
 }
 
 .charged {
     font-weight: bold;
     font-size: 14px;
+}
+
+.pa-top {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+    background-color: var(--primary);
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 60px;
+    padding: 0 20px;
 }
 
 .pa-notes-tag {
@@ -1050,7 +1067,7 @@ a:hover {
 }
 
 .pa-notes {
-    background-color: rgb(219, 219, 219);
+    background-color: var(--grey);
     border-radius: 5px;
     padding: 10px;
     margin-bottom: 10px;
@@ -1062,7 +1079,6 @@ a:hover {
 
 .pa-name {
     font-weight: bold;
-    margin-bottom: 10px;
 }
 
 .pa-actions {

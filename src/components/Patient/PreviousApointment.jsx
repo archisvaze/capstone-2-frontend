@@ -78,8 +78,10 @@ export default function PreviousApointment(props) {
 
     return (
         <div className='previous-appointment user-patient'>
+            <div className="pa-top">
             <p className='pa-name'>Consultation with Dr.{obj.doctor.username}</p>
             <p className="charged">Charged: $ {obj.cost}</p>
+            </div>
             <p className='pa-notes-tag'>Doctors Notes: </p>
             <div className="pa-notes">
                 <p>{obj.notes}</p>
