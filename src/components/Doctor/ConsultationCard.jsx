@@ -15,14 +15,17 @@ export default function ConsultationCard(props) {
     return (
         <div key={obj._id} className="dh-consultation user-doctor">
 
-            <div className="dh-contact-info">
-                <p><img src={profile} alt="" />{obj.patient.username}</p>
-                <p><img src={phone} alt="" />{obj.patient.phone}</p>
+            <div className="dh-date-time-container">
+                <p style={{fontSize: "13px", marginLeft : "20px"}}>Consultation Appointment</p>
+                <div className='dh-date-time'>
+                <p className='dh-date'> <img src={calendar} alt="" />{obj.date}</p>
+                <p className='dh-time'><img src={clock} alt="" />{obj.time}</p>
+                </div>
             </div>
 
-            <div className="dh-date-time-container">
-                <p> <img src={calendar} alt="" />{obj.date}</p>
-                <p><img src={clock} alt="" />{obj.time}</p>
+            <div className="dh-contact-info">
+                <p><img style={{width: "30px"}} src={obj.patient.img} alt="" />{obj.patient.username}</p>
+                <p><img src={phone} alt="" />{obj.patient.phone}</p>
             </div>
 
             <div className='dh-conditions'>

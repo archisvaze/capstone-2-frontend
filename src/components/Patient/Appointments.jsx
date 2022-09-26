@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { setLogout } from '../../slices/mySlice';
 import AppointmentCard from './AppointmentCard';
 import PreviousApointment from './PreviousApointment';
+import { motion } from 'framer-motion';
 
 export default function Appointments() {
     const dispatch = useDispatch();
@@ -33,7 +34,11 @@ export default function Appointments() {
             })
     }
     return (
-        <div className='appointments-page page user-patient'>
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            className='appointments-page page user-patient'>
             <h3>Your Upcoming Appointments -</h3>
             <div className="preivous-consultations-container">
                 <div className="previous-consultation titles">
@@ -61,6 +66,6 @@ export default function Appointments() {
                     } else return (<></>)
                 })}
             </div>
-        </div>
+        </motion.div>
     )
 }

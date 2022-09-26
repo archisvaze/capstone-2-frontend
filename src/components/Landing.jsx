@@ -64,7 +64,7 @@ export default function Landing() {
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
       className='landing fullpage user-doctor'>
       <h1>{user === "" ? "Choose your Account" : `I am a ${user}`}</h1>
 

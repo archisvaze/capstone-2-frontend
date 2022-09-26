@@ -6,6 +6,8 @@ import { useNavigate } from 'react-router-dom';
 import { setConsultation, setLogout, setAlert } from '../../slices/mySlice';
 import avatar from "../../images/avatar-placeholder.webp"
 import { specialities } from "../../specialities"
+import doctors_img from "../../images/doctors.svg"
+import { motion } from 'framer-motion';
 
 export default function PatientHome() {
   const dispatch = useDispatch();
@@ -93,10 +95,15 @@ export default function PatientHome() {
   }
 
   return (
-    <div className="patient-home page user-patient">
+    <motion.div
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ duration: 0.5 }}
+      className="patient-home page user-patient">
 
       <p className='heading'>Search Doctor, Make an Appointment</p>
       <p className='sub-heading'>Discover the best doctor in your city that meets your needs</p>
+      <img style={{ width: "500px" }} src={doctors_img} alt="" />
 
       <div className="ph-search-container">
         <div className="ph-search">
@@ -193,6 +200,6 @@ export default function PatientHome() {
         }} className="filter"></div>
       </div>
 
-    </div>
+    </motion.div>
   )
 }

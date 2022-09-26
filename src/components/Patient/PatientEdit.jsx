@@ -5,6 +5,7 @@ import FileBase64 from 'react-file-base64';
 import { specialities } from "../../specialities"
 import { useNavigate } from 'react-router-dom';
 import { setLogout, setOnboard } from '../../slices/mySlice';
+import { motion } from 'framer-motion';
 
 export default function PatientEdit() {
     const dispatch = useDispatch();
@@ -67,7 +68,11 @@ export default function PatientEdit() {
 
     }
     return (
-        <div className='patient-onboarding fullpage user-patient'>
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            className='patient-onboarding fullpage user-patient'>
 
             <h1>Edit You Profile</h1>
             <p>This will help us serve your better.</p>
@@ -118,6 +123,6 @@ export default function PatientEdit() {
 
                 <button onClick={() => { onboard() }} className="save-btn">Save</button>
             </div>
-        </div>
+        </motion.div>
     )
 }
