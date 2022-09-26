@@ -38,9 +38,7 @@ export default function Landing() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(values)
     }
-
-    console.log(`https://doc-seek.herokuapp.com/auth/${user}/login`)
-
+    
     fetch(`https://doc-seek.herokuapp.com/auth/${user}/login`, reqOptions)
       .then(res => res.json())
       .then(data => {

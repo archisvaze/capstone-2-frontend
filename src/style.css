@@ -432,10 +432,11 @@ a:hover {
 .save-btn {
     margin-top: 30px;
     width: 100%;
-    background-color: var(--primary);
+    background-color: #388e3c;
     height: 35px;
     letter-spacing: 1px;
     color: white;
+    font-size: 16px;
 }
 
 .health-data,
