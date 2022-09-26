@@ -1,5 +1,13 @@
 # DocSeek Web App
 
+Link: https://doc-seek.netlify.app/
+
+Tech Stack:
+- React
+- NodeJS
+- Express
+- PostgreSQL
+
 ## Requirements
 ### Profile Creation
 #### Doctor
@@ -54,10 +62,6 @@ Booking a consultation
 ![Screenshot 2022-09-26 121207](https://user-images.githubusercontent.com/92965519/192212566-fe5d30e1-3073-40c7-adf9-394016cc46e2.png)
 
 
-### Tech Stack
-- React
-- Express
-- PostgreSQL
 
 ## Available Scripts
 
