@@ -60,7 +60,7 @@ export default function DoctorEdit() {
       body: JSON.stringify({ email: state.user.email, city, country, speciality, cost, img, hospital, experience, days, times, qualification })
     }
 
-    fetch(`http://localhost:8000/doctor/onboard/`, reqOptions)
+    fetch(`https://doc-seek.herokuapp.com/doctor/onboard/`, reqOptions)
       .then(res => res.json())
       .then(data => {
         console.log(data)

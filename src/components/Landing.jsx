@@ -39,9 +39,9 @@ export default function Landing() {
       body: JSON.stringify(values)
     }
 
-    console.log(`http://localhost:8000/auth/${user}/login`)
+    console.log(`https://doc-seek.herokuapp.com/auth/${user}/login`)
 
-    fetch(`http://localhost:8000/auth/${user}/login`, reqOptions)
+    fetch(`https://doc-seek.herokuapp.com/auth/${user}/login`, reqOptions)
       .then(res => res.json())
       .then(data => {
         console.log(data)
@@ -132,7 +132,7 @@ export default function Landing() {
                   alert("Please choose your account", "error")
                 }
                 else {
-                  window.open(`http://localhost:8000/auth/${user}/forgot-password`)
+                  window.open(`https://doc-seek.herokuapp.com/auth/${user}/forgot-password`)
                 }
               }} style={{ textAlign: "right", marginRight: "10px", color: "green", cursor: "pointer" }}>Forgot Password?</p>
 

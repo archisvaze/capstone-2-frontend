@@ -31,7 +31,7 @@ export default function Consultation(props) {
             console.log("date is not set")
         }
         else if (doctor?.doctor_id) {
-            fetch(`http://localhost:8000/doctor/timings/${doctor.doctor_id}/${date}`, { method: "get", headers: { "Authorization": `Bearer ${state.accessToken}` } })
+            fetch(`https://doc-seek.herokuapp.com/doctor/timings/${doctor.doctor_id}/${date}`, { method: "get", headers: { "Authorization": `Bearer ${state.accessToken}` } })
                 .then(res => res.json())
                 .then(data => {
                     console.log(data)
@@ -72,7 +72,7 @@ export default function Consultation(props) {
                 doctor_id: doctor.doctor_id, time, date: formatedDate
             })
         }
-        fetch(`http://localhost:8000/consultation/`, reqOptions)
+        fetch(`https://doc-seek.herokuapp.com/consultation/`, reqOptions)
             .then(res => res.json())
             .then(data => {
                 if (data.error) {

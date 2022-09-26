@@ -22,7 +22,7 @@ export default function DoctorSignup() {
             body: JSON.stringify(values)
         }
 
-        fetch(`http://localhost:8000/auth/doctor/signup`, reqOptions)
+        fetch(`https://doc-seek.herokuapp.com/auth/doctor/signup`, reqOptions)
             .then(res => res.json())
             .then(data => {
                 console.log(data)

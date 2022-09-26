@@ -43,14 +43,14 @@ export default function PatientHome() {
 
   function getDoctors(speciality) {
     if (speciality === "All" || speciality === undefined) {
-      fetch(`http://localhost:8000/doctor/`, { method: 'get', headers: { "Authorization": `Bearer ${state.accessToken}` } })
+      fetch(`https://doc-seek.herokuapp.com/doctor/`, { method: 'get', headers: { "Authorization": `Bearer ${state.accessToken}` } })
         .then(res => res.json())
         .then(data => {
           console.log(data)
           setDoctors(data)
         })
     } else {
-      fetch(`http://localhost:8000/doctor/${speciality}`, { method: 'get', headers: { "Authorization": `Bearer ${state.accessToken}` } })
+      fetch(`https://doc-seek.herokuapp.com/doctor/${speciality}`, { method: 'get', headers: { "Authorization": `Bearer ${state.accessToken}` } })
         .then(res => res.json())
         .then(data => {
           console.log(data)
@@ -61,14 +61,14 @@ export default function PatientHome() {
 
   function getDoctorsByCity(city) {
     if (city === "" || city === undefined) {
-      fetch(`http://localhost:8000/doctor/`, { method: 'get', headers: { "Authorization": `Bearer ${state.accessToken}` } })
+      fetch(`https://doc-seek.herokuapp.com/doctor/`, { method: 'get', headers: { "Authorization": `Bearer ${state.accessToken}` } })
         .then(res => res.json())
         .then(data => {
           console.log(data)
           setDoctors(data)
         })
     } else {
-      fetch(`http://localhost:8000/doctor/city/${city}`, { method: 'get', headers: { "Authorization": `Bearer ${state.accessToken}` } })
+      fetch(`https://doc-seek.herokuapp.com/doctor/city/${city}`, { method: 'get', headers: { "Authorization": `Bearer ${state.accessToken}` } })
         .then(res => res.json())
         .then(data => {
           console.log(data)
@@ -78,14 +78,14 @@ export default function PatientHome() {
   }
   function getDoctorsByName(username) {
     if (username === "" || username === undefined) {
-      fetch(`http://localhost:8000/doctor/`, { method: 'get', headers: { "Authorization": `Bearer ${state.accessToken}` } })
+      fetch(`https://doc-seek.herokuapp.com/doctor/`, { method: 'get', headers: { "Authorization": `Bearer ${state.accessToken}` } })
         .then(res => res.json())
         .then(data => {
           console.log(data)
           setDoctors(data)
         })
     } else {
-      fetch(`http://localhost:8000/doctor/username/${username}`, { method: 'get', headers: { "Authorization": `Bearer ${state.accessToken}` } })
+      fetch(`https://doc-seek.herokuapp.com/doctor/username/${username}`, { method: 'get', headers: { "Authorization": `Bearer ${state.accessToken}` } })
         .then(res => res.json())
         .then(data => {
           console.log(data)

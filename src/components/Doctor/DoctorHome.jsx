@@ -76,7 +76,7 @@ export default function DoctorHome() {
 
 
   function getConsultations() {
-    fetch(`http://localhost:8000/consultation/doctor/${state.user.doctor_id}`, { method: "get", headers: { "Authorization": `Bearer ${state.accessToken}` } })
+    fetch(`https://doc-seek.herokuapp.com/consultation/doctor/${state.user.doctor_id}`, { method: "get", headers: { "Authorization": `Bearer ${state.accessToken}` } })
       .then(res => res.json())
       .then(data => {
         console.log(data)
@@ -94,7 +94,7 @@ export default function DoctorHome() {
       body: JSON.stringify({ notes: notes })
     }
 
-    fetch(`http://localhost:8000/consultation/doctor/${consultationID}`, reqOptions)
+    fetch(`https://doc-seek.herokuapp.com/consultation/doctor/${consultationID}`, reqOptions)
       .then(res => res.json())
       .then(data => {
         alert(data.message, "alert")
@@ -111,7 +111,7 @@ export default function DoctorHome() {
         "Authorization": `Bearer ${state.accessToken}`
       }
     }
-    fetch(`http://localhost:8000/consultation/${id}`, reqOptions)
+    fetch(`https://doc-seek.herokuapp.com/consultation/${id}`, reqOptions)
       .then(res => res.json())
       .then(data => {
         alert(data.message, "alert")

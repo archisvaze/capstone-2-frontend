@@ -23,7 +23,7 @@ export default function PatientSignup() {
             body: JSON.stringify(values)
         }
 
-        fetch(`http://localhost:8000/auth/patient/signup`, reqOptions)
+        fetch(`https://doc-seek.herokuapp.com/auth/patient/signup`, reqOptions)
             .then(res => res.json())
             .then(data => {
                 console.log(data)
