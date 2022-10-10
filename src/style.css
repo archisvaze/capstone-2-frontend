@@ -21,7 +21,7 @@
 
 body {
     min-height: 100vh;
-    width: 100vw;
+    min-width: 100vw;
     overflow-x: hidden;
     display: flex;
     justify-content: center;
@@ -73,6 +73,44 @@ button {
 ::-webkit-scrollbar-thumb:hover {
     background: #555;
 }
+
+/*Loader*/
+.loader {
+    margin-left: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 4px solid white;
+    border-radius: 50%;
+    border-top: 4px solid #0067dc00;
+    width: 20px;
+    height: 20px;
+    -webkit-animation: spin 2s linear infinite;
+    /* Safari */
+    animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 
 header {
     height: 60px;
@@ -1034,6 +1072,7 @@ a:hover {
 }
 
 .previous-appointment {
+    width: 320px;
     background-color: white;
     padding: 20px;
     border-radius: 5px;

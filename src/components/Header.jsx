@@ -1,18 +1,27 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
-import { setLogout } from '../slices/mySlice';
+import { setLogout, setAlert } from '../slices/mySlice';
 import Logo from "./Logo"
 import avatar from "../images/avatar-placeholder.webp"
+import Loader from "./Loader"
 
 export default function Header() {
     const state = useSelector((state) => state.myState);
     const dispatch = useDispatch();
     const navigate = useNavigate();
+
+    function loading(text) {
+        dispatch(setAlert([text, true, "alert", true]))
+        setTimeout(() => {
+            dispatch(setAlert([text, false, "alert", "false"]))
+        }, 4000)
+    }
+
     return (
         <header className={state.user.patient_id === undefined ? 'user-doctor' : 'user-patient'}>
 
-            <div style={{ top: state.alert[1] === true ? "90px" : "-20vh", backgroundColor: state.alert[2] === "error" ? "crimson" : state.user.patient_id === undefined ? "#388e3c" : "#3175db" }} className="alert">{state.alert[0]}</div>
+            <div style={{ top: state.alert[1] === true ? "90px" : "-20vh", backgroundColor: state.alert[2] === "error" ? "crimson" : state.user.patient_id === undefined ? "#388e3c" : "#3175db" }} className="alert">{state.alert[0]} {state.alert[3] === true ? <Loader /> : <></>}</div>
 
             <nav>
                 <div className="logo-container">
@@ -73,8 +82,12 @@ export default function Header() {
 
 
                     <button style={{ display: state.isLoggedIn === false ? "none" : "flex", borderRadius: "5px" }} onClick={() => {
-                        dispatch(setLogout())
-                        navigate("/")
+                      dispatch(setAlert(["Logging Out ", true, "alert", true]))
+                        setTimeout(() => {
+                            dispatch(setLogout())
+                            navigate("/")
+                            dispatch(setAlert(["Logged Out", false, "alert", false]))
+                        }, 2000)
                     }} className="logout-btn">Logout</button>
                 </div>
             </nav>

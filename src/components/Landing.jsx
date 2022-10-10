@@ -21,6 +21,13 @@ export default function Landing() {
     }, 4000)
   }
 
+  function loading(text) {
+    dispatch(setAlert([text, true, "alert", true ]))
+    setTimeout(() => {
+      dispatch(setAlert([text, false, "alert", "false"]))
+    }, 4000)
+  }
+
   const [user, setUser] = useState("")
 
   useEffect(() => {
@@ -38,7 +45,9 @@ export default function Landing() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(values)
     }
-    
+
+    loading("Signing In ")
+
     fetch(`https://doc-seek.herokuapp.com/auth/${user}/login`, reqOptions)
       .then(res => res.json())
       .then(data => {

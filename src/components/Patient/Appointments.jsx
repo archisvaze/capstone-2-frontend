@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
-import { setLogout } from '../../slices/mySlice';
+import { setLogout, setAlert } from '../../slices/mySlice';
 import AppointmentCard from './AppointmentCard';
 import PreviousApointment from './PreviousApointment';
 import { motion } from 'framer-motion';

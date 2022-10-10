@@ -4,7 +4,7 @@ let startState = {
     isLoggedIn: false,
     user: {},
     consultation: {},
-    alert: ["", false, "error"],
+    alert: ["", false, "error", true],
 };
 
 if (localStorage.getItem("docseek-data")) {

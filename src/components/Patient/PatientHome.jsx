@@ -43,18 +43,22 @@ export default function PatientHome() {
 
   function getDoctors(speciality) {
     if (speciality === "All" || speciality === undefined) {
+      dispatch(setAlert(["Finding Doctors", true, "alert", true ]))
       fetch(`https://doc-seek.herokuapp.com/doctor/`, { method: 'get', headers: { "Authorization": `Bearer ${state.accessToken}` } })
         .then(res => res.json())
         .then(data => {
           console.log(data)
           setDoctors(data)
+          dispatch(setAlert(["Finding Doctors", false, "alert", false ]))
         })
     } else {
+      dispatch(setAlert(["Finding Doctors", true, "alert", true ]))
       fetch(`https://doc-seek.herokuapp.com/doctor/${speciality}`, { method: 'get', headers: { "Authorization": `Bearer ${state.accessToken}` } })
         .then(res => res.json())
         .then(data => {
           console.log(data)
           setDoctors(data)
+          dispatch(setAlert(["Finding Doctors", false, "alert", false ]))
         })
     }
   }

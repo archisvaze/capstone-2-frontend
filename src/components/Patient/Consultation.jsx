@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { allDays } from '../../times';
+import { setAlert } from '../../slices/mySlice';
 import Calendar from 'react-calendar';
 import avatar from "../../images/avatar-placeholder.webp"
 
 export default function Consultation(props) {
+    const dispatch = useDispatch();
     let showPopUp = props.showPopUp;
     let setShowPopUp = props.setShowPopUp;
     let alert = props.alert;
@@ -72,6 +74,7 @@ export default function Consultation(props) {
                 doctor_id: doctor.doctor_id, time, date: formatedDate
             })
         }
+        dispatch(setAlert(["Booking ", true, "alert", true ]))
         fetch(`https://doc-seek.herokuapp.com/consultation/`, reqOptions)
             .then(res => res.json())
             .then(data => {
