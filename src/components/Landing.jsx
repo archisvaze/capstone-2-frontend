@@ -24,14 +24,20 @@ export default function Landing() {
   function loading(text) {
     dispatch(setAlert([text, true, "alert", true ]))
     setTimeout(() => {
-      dispatch(setAlert([text, false, "alert", "false"]))
+      dispatch(setAlert([text, false, "alert", false]))
     }, 4000)
   }
 
   const [user, setUser] = useState("")
 
   useEffect(() => {
-    dispatch(setLogout())
+    dispatch(setLogout());
+    dispatch(setAlert(["Connecting to server please wait...", true, "error", true ]))
+    fetch(`https://doc-seek.herokuapp.com/`)
+    .then(res => res.json())
+    .then(data => {
+      dispatch(setAlert(["Connected!", false, "alert", false ]))
+    })
   }, [])
 
   const login = (values, user) => {
