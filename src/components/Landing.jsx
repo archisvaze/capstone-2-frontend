@@ -187,7 +187,7 @@ export default function Landing() {
           setadminPassword(e.target.value)
         }} type="password" placeholder='Admin Password' />
         <button onClick={() => {
-          if (adminUsername === "archis" && adminPassword === "12345") {
+          if (adminUsername === process.env.REACT_APP_ADMIN && adminPassword === process.env.REACT_APP_PASSWORD) {
             dispatch(setAdmin(true))
             navigate("/admin-login")
           }
