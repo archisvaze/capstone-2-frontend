@@ -173,9 +173,7 @@ export default function Landing() {
             </Form>
           )}
         </Formik>
-
       </div>
-
       <div onClick={() => {
         setadminlogin(false)
       }} style={{ display: adminlogin === true ? "flex" : "none" }} className="filter"></div>
