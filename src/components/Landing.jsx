@@ -180,10 +180,10 @@ export default function Landing() {
       <div style={{ display: adminlogin === true ? "flex" : "none" }} className="admin-input-container">
         <input onChange={(e) => {
           setadminUsername(e.target.value)
-        }} type="text" placeholder='Admin Username' />
+        }} type="text" placeholder='Admin Username' value={adminUsername} />
         <input onChange={(e) => {
           setadminPassword(e.target.value)
-        }} type="password" placeholder='Admin Password' />
+        }} type="password" placeholder='Admin Password' value={adminPassword} />
         <button onClick={() => {
           if (adminUsername === process.env.REACT_APP_ADMIN && adminPassword === process.env.REACT_APP_PASSWORD) {
             dispatch(setAdmin(true))
