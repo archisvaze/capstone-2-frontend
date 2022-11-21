@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { setLogout, setLogin, setAlert } from '../slices/mySlice';
+import { setLogout, setLogin, setAlert, setAdmin } from '../slices/mySlice';
 import { motion } from 'framer-motion'
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import doctor from "../images/doctor.svg";
@@ -14,6 +14,10 @@ export default function Landing() {
   const navigate = useNavigate();
   const state = useSelector((state) => state.myState);
 
+  const [adminlogin, setadminlogin] = useState(false);
+  const [adminUsername, setadminUsername] = useState("")
+  const [adminPassword, setadminPassword] = useState("")
+
   function alert(text, flag) {
     dispatch(setAlert([text, true, flag]))
     setTimeout(() => {
@@ -22,7 +26,7 @@ export default function Landing() {
   }
 
   function loading(text) {
-    dispatch(setAlert([text, true, "alert", true ]))
+    dispatch(setAlert([text, true, "alert", true]))
     setTimeout(() => {
       dispatch(setAlert([text, false, "alert", false]))
     }, 4000)
@@ -32,12 +36,12 @@ export default function Landing() {
 
   useEffect(() => {
     dispatch(setLogout());
-    dispatch(setAlert(["Connecting to server please wait...", true, "error", true ]))
+    dispatch(setAlert(["Connecting to server please wait...", true, "error", true]))
     fetch(`https://doc-seek.herokuapp.com/`)
-    .then(res => res.json())
-    .then(data => {
-      dispatch(setAlert(["Connected!", false, "alert", false ]))
-    })
+      .then(res => res.json())
+      .then(data => {
+        dispatch(setAlert(["Connected!", false, "alert", false]))
+      })
   }, [])
 
   const login = (values, user) => {
@@ -169,7 +173,32 @@ export default function Landing() {
             </Form>
           )}
         </Formik>
+
       </div>
+
+      <div onClick={() => {
+        setadminlogin(false)
+      }} style={{ display: adminlogin === true ? "flex" : "none" }} className="filter"></div>
+      <div style={{ display: adminlogin === true ? "flex" : "none" }} className="admin-input-container">
+        <input onChange={(e) => {
+          setadminUsername(e.target.value)
+        }} type="text" placeholder='Admin Username' />
+        <input onChange={(e) => {
+          setadminPassword(e.target.value)
+        }} type="password" placeholder='Admin Password' />
+        <button onClick={() => {
+          if (adminUsername === "archis" && adminPassword === "12345") {
+            dispatch(setAdmin(true))
+            navigate("/admin-login")
+          }
+        }}>Login</button>
+      </div>
+
+      <button onClick={() => {
+        setadminUsername("")
+        setadminPassword("")
+        setadminlogin(true)
+      }} className='admin-p'>Login as Admin</button>
 
     </motion.div>
   )

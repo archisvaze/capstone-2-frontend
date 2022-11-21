@@ -264,6 +264,39 @@ a:hover {
     transform: scale(1.1);
 }
 
+.admin-p {
+    margin: 30px auto;
+    color: rgb(160, 0, 0);
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.admin-input-container {
+    z-index: 50;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.admin-input-container input {
+    border: 1px solid rgb(201, 201, 201);
+    background-color: white;
+    height: 40px;
+    width: 300px;
+    padding-left: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    color: black;
+    margin: 10px;
+}
+
+.admin-input-container button {
+    border-radius: 5px;
+    width: 300px;
+    color: rgb(160, 0, 0);
+}
+
 /*LOGIN PAGE*/
 
 .login {
@@ -1251,6 +1284,68 @@ abbr[title] {
 }
 
 
+
+/*Admin-page*/
+.admin-page {
+    padding-top: 120px;
+    width: 100vw;
+    max-width: 1440px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.admin-doctors-container {
+    width: 100%;
+    max-width: 1440px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.ph-doctor-card {
+    position: relative;
+}
+
+.ph-doctor-card:hover .suspend-btn {
+    display: flex;
+}
+
+.suspend-btn {
+    display: none;
+    position: absolute;
+    margin: auto;
+    background-color: rgba(168, 21, 21, 0.822);
+    color: white;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.suspend-btn:hover {
+    background-color: rgb(201, 0, 0);
+}
+
+.suspended {
+    padding: 10px 20px;
+    display: none;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    background-color: rgb(201, 0, 0);
+    color: white;
+    border-radius: 5px;
+}
+.unsuspend-btn{
+    padding: 10px 20px;
+    display: flex;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    background-color: rgb(0, 131, 17);
+    color: white;
+    border-radius: 5px;
+    font-size: 16px;
+}
 
 
 @media screen and (min-width: 0px) and (max-width: 930px) {

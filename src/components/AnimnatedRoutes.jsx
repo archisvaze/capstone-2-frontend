@@ -12,9 +12,12 @@ import PatientHome from "./Patient/PatientHome"
 import DoctorEdit from './Doctor/DoctorEdit'
 import PatientEdit from './Patient/PatientEdit'
 
+import AdminLogin from './Admin/AdminLogin'
+
 
 import { AnimatePresence } from 'framer-motion'
 import Appointments from './Patient/Appointments'
+import AccountSuspended from './Doctor/AccountSuspended'
 
 export default function AnimnatedRoutes() {
     const location = useLocation();
@@ -35,6 +38,10 @@ export default function AnimnatedRoutes() {
                 <Route path="/patient-edit" element={<PatientEdit />} />
                 <Route path="/patient-home" element={<PatientHome />} />
                 <Route path="/patient-appointments" element={<Appointments />} />
+
+                <Route path="/admin-login" element={<AdminLogin />} />
+
+                <Route path="/account-suspended" element={<AccountSuspended />} />
                
             </Routes>
         </AnimatePresence>

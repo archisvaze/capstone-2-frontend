@@ -24,7 +24,9 @@ export default function Header() {
             <div style={{ top: state.alert[1] === true ? "90px" : "-20vh", backgroundColor: state.alert[2] === "error" ? "crimson" : state.user.patient_id === undefined ? "#388e3c" : "#3175db" }} className="alert">{state.alert[0]} {state.alert[3] === true ? <Loader /> : <></>}</div>
 
             <nav>
-                <div className="logo-container">
+                <div style={{cursor: "pointer"}} onClick={() => {
+                    navigate("/")
+                }} className="logo-container">
                     <Logo />
                     <p className="logo-text">DOCSeek</p>
 

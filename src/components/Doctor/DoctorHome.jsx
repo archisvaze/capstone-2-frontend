@@ -32,6 +32,9 @@ export default function DoctorHome() {
       navigate("/")
     } else if (state.user.onboarded === false) {
       navigate("/doctor-onboarding")
+    } else if (state.user.suspended === true) {
+      dispatch(setLogout())
+      navigate("/account-suspended")
     } else {
       getConsultations();
     }
