@@ -37,7 +37,7 @@ export default function Landing() {
   useEffect(() => {
     dispatch(setLogout());
     dispatch(setAlert(["Connecting to server please wait...", true, "error", true]))
-    fetch(`https://doc-seek.herokuapp.com/`)
+    fetch(`https://doc-seek-server.onrender.com/`)
       .then(res => res.json())
       .then(data => {
         dispatch(setAlert(["Connected!", false, "alert", false]))
@@ -58,7 +58,7 @@ export default function Landing() {
 
     loading("Signing In ")
 
-    fetch(`https://doc-seek.herokuapp.com/auth/${user}/login`, reqOptions)
+    fetch(`https://doc-seek-server.onrender.com/auth/${user}/login`, reqOptions)
       .then(res => res.json())
       .then(data => {
         console.log(data)
@@ -149,7 +149,7 @@ export default function Landing() {
                   alert("Please choose your account", "error")
                 }
                 else {
-                  window.open(`https://doc-seek.herokuapp.com/auth/${user}/forgot-password`)
+                  window.open(`https://doc-seek-server.onrender.com/auth/${user}/forgot-password`)
                 }
               }} style={{ textAlign: "right", marginRight: "10px", color: "green", cursor: "pointer" }}>Forgot Password?</p>
 

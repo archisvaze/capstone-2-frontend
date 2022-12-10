@@ -53,7 +53,7 @@ export default function PatientOnboarding() {
       body: JSON.stringify({ email: state.user.email, city, country, conditions, age, bloodgroup, gender, img, phone, lookingfor })
     }
 
-    fetch(`https://doc-seek.herokuapp.com/patient/onboard/`, reqOptions)
+    fetch(`https://doc-seek-server.onrender.com/patient/onboard/`, reqOptions)
       .then(res => res.json())
       .then(data => {
         console.log(data)

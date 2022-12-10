@@ -44,7 +44,7 @@ export default function PatientHome() {
   function getDoctors(speciality) {
     if (speciality === "All" || speciality === undefined) {
       dispatch(setAlert(["Finding Doctors", true, "alert", true ]))
-      fetch(`https://doc-seek.herokuapp.com/doctor/`, { method: 'get', headers: { "Authorization": `Bearer ${state.accessToken}` } })
+      fetch(`https://doc-seek-server.onrender.com/doctor/`, { method: 'get', headers: { "Authorization": `Bearer ${state.accessToken}` } })
         .then(res => res.json())
         .then(data => {
           console.log(data)
@@ -53,7 +53,7 @@ export default function PatientHome() {
         })
     } else {
       dispatch(setAlert(["Finding Doctors", true, "alert", true ]))
-      fetch(`https://doc-seek.herokuapp.com/doctor/${speciality}`, { method: 'get', headers: { "Authorization": `Bearer ${state.accessToken}` } })
+      fetch(`https://doc-seek-server.onrender.com/doctor/${speciality}`, { method: 'get', headers: { "Authorization": `Bearer ${state.accessToken}` } })
         .then(res => res.json())
         .then(data => {
           console.log(data)
@@ -65,14 +65,14 @@ export default function PatientHome() {
 
   function getDoctorsByCity(city) {
     if (city === "" || city === undefined) {
-      fetch(`https://doc-seek.herokuapp.com/doctor/`, { method: 'get', headers: { "Authorization": `Bearer ${state.accessToken}` } })
+      fetch(`https://doc-seek-server.onrender.com/doctor/`, { method: 'get', headers: { "Authorization": `Bearer ${state.accessToken}` } })
         .then(res => res.json())
         .then(data => {
           console.log(data)
           setDoctors(data)
         })
     } else {
-      fetch(`https://doc-seek.herokuapp.com/doctor/city/${city}`, { method: 'get', headers: { "Authorization": `Bearer ${state.accessToken}` } })
+      fetch(`https://doc-seek-server.onrender.com/doctor/city/${city}`, { method: 'get', headers: { "Authorization": `Bearer ${state.accessToken}` } })
         .then(res => res.json())
         .then(data => {
           console.log(data)
@@ -82,14 +82,14 @@ export default function PatientHome() {
   }
   function getDoctorsByName(username) {
     if (username === "" || username === undefined) {
-      fetch(`https://doc-seek.herokuapp.com/doctor/`, { method: 'get', headers: { "Authorization": `Bearer ${state.accessToken}` } })
+      fetch(`https://doc-seek-server.onrender.com/doctor/`, { method: 'get', headers: { "Authorization": `Bearer ${state.accessToken}` } })
         .then(res => res.json())
         .then(data => {
           console.log(data)
           setDoctors(data)
         })
     } else {
-      fetch(`https://doc-seek.herokuapp.com/doctor/username/${username}`, { method: 'get', headers: { "Authorization": `Bearer ${state.accessToken}` } })
+      fetch(`https://doc-seek-server.onrender.com/doctor/username/${username}`, { method: 'get', headers: { "Authorization": `Bearer ${state.accessToken}` } })
         .then(res => res.json())
         .then(data => {
           console.log(data)

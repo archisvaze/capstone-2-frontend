@@ -62,7 +62,7 @@ export default function PreviousApointment(props) {
             body: JSON.stringify({ review: review, rating: value })
         }
 
-        fetch(`https://doc-seek.herokuapp.com/consultation/patient/${obj._id}`, reqOptions)
+        fetch(`https://doc-seek-server.onrender.com/consultation/patient/${obj._id}`, reqOptions)
             .then(res => res.json())
             .then(data => {
                 console.log(data);

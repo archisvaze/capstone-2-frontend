@@ -33,7 +33,7 @@ export default function Consultation(props) {
             console.log("date is not set")
         }
         else if (doctor?.doctor_id) {
-            fetch(`https://doc-seek.herokuapp.com/doctor/timings/${doctor.doctor_id}/${date}`, { method: "get", headers: { "Authorization": `Bearer ${state.accessToken}` } })
+            fetch(`https://doc-seek-server.onrender.com/doctor/timings/${doctor.doctor_id}/${date}`, { method: "get", headers: { "Authorization": `Bearer ${state.accessToken}` } })
                 .then(res => res.json())
                 .then(data => {
                     console.log(data)
@@ -75,7 +75,7 @@ export default function Consultation(props) {
             })
         }
         dispatch(setAlert(["Booking ", true, "alert", true ]))
-        fetch(`https://doc-seek.herokuapp.com/consultation/`, reqOptions)
+        fetch(`https://doc-seek-server.onrender.com/consultation/`, reqOptions)
             .then(res => res.json())
             .then(data => {
                 if (data.error) {

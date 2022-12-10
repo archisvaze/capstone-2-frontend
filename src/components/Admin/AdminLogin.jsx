@@ -28,7 +28,7 @@ export default function AdminLogin() {
     }, [])
 
     const getDoctors = async () => {
-        fetch('https://doc-seek.herokuapp.com/all-doctors')
+        fetch('https://doc-seek-server.onrender.com/all-doctors')
             .then(res => res.json())
             .then(data => {
                 setDoctors(data);
@@ -36,7 +36,7 @@ export default function AdminLogin() {
     }
 
     const suspend = async (id) => {
-        fetch(`https://doc-seek.herokuapp.com/suspend-doctor/${id}`, { method: 'POST' })
+        fetch(`https://doc-seek-server.onrender.com/suspend-doctor/${id}`, { method: 'POST' })
             .then(res => res.json())
             .then(data => {
                 console.log(data)
@@ -45,7 +45,7 @@ export default function AdminLogin() {
     }
 
     const unsuspend = async (id) => {
-        fetch(`https://doc-seek.herokuapp.com/unsuspend-doctor/${id}`, { method: 'POST' })
+        fetch(`https://doc-seek-server.onrender.com/unsuspend-doctor/${id}`, { method: 'POST' })
             .then(res => res.json())
             .then(data => {
                 console.log(data)

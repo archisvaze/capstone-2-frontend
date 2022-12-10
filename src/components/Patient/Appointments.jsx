@@ -26,7 +26,7 @@ export default function Appointments() {
     }, [state.alert])
 
     function getAppointments() {
-        fetch(`https://doc-seek.herokuapp.com/consultation/patient/${state.user.patient_id}`, { method: "get", headers: { "Authorization": `Bearer ${state.accessToken}` } })
+        fetch(`https://doc-seek-server.onrender.com/consultation/patient/${state.user.patient_id}`, { method: "get", headers: { "Authorization": `Bearer ${state.accessToken}` } })
             .then(res => res.json())
             .then(data => {
                 console.log(data)
